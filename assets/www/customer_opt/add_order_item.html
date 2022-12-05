@@ -1,0 +1,814 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for price list
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HOME</title>
+    <meta name="viewport"
+    	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+	<meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/en.css" lang="en" />
+    <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+    <link type="text/css" href="../css/jquery.mobile.datebox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+        href="../css/style_1400.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+        href="../css/style_1200.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px)"
+        href="../css/style_800.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 600px) and (max-width: 699px)"
+        href="../css/style_700.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 320px) and (max-width: 599px)"
+        href="../css/style_600.css" />
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+    <script type="text/javascript" src="../js/common.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.mobile.datebox.min.js"></script>
+
+    <script src="../LangJS/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+
+    <script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript" lang="en"></script>
+
+        <script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+</head>
+<body>
+    <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+        <div>
+            <img title="" alt="" src="../images/bg.png" id="background">
+        </div>
+        <div data-role="header" data-position="inline" id="bgclheader">
+            <!--<a href="index.html"   id="Back_inner">test</a>-->
+            <a id="Back_inner" href="#" rel="external" lang="en">Back</a> <div class="wrapper"><div class="card_content"><div><img title="" alt="" data-pushbar-target="left"  src="../images/icons8-menu-50.png" id="setting"></div></div></div> 
+            <h1 lang="en">
+               Add Order Item</h1>
+            <a href="#" id="lang_inner">EN</a>
+        </div>
+        <div data-role="content" class="centerboxInvReq">
+			<div class="com_div comm captionLabel">
+                <div  style="width: 90%;">
+                    <div>
+                        <input type="text" name="txtSearch" id="txtSearch" value="" size="40"  placeholder="Search by item code/desc./barcode" style="width:70%;float:left;"/>
+		             	<div>
+		             	<a href="#" id="searchOrder" rel="external" style="text-decoration: none;">
+							<img src="../images/search.png"  style="float:right;" onclick="getSearchResults();"/>
+						</a>
+						</div>                        
+                     </div>
+
+                </div>  
+                <div class="textBar">
+                    <table cellpadding="1" cellspacing="1" border="0" width="100%">
+                        <tr>
+                            <td lang="en" colspan="2" width="40%" id="group" class="rtext">
+                                Select Item Group
+                            </td>
+                             <td colspan="2" width="60%">
+                                <select style="width:100%" name="select-choice-1" id="itemgroup" >
+                                </select>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td colspan="2" lang="en"  width="40%" class="rtext">
+                                Item Group Code #
+                            </td>
+                            <td colspan="2" lang="en"  width="50%" class="rtext">
+                                Alternate Group Code
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td colspan="2">
+                                <div class="addressdiv" id="groupcode" style="width:80%"></div>
+                            </td>
+                            <td colspan="2">
+                                <div class="addressdiv" id="alcode" style="width:80%"></div>
+                            </td>
+                        </tr>
+                    </table>
+                  
+                    
+                </div>
+
+                <div class="tblBox tbltd" id="contentWrapper">
+                    <div>
+                        <table class="tblHeader"  width="100%" cellpadding="5" cellspacing="0" id="tblHeaderContent">
+                        	<tr>
+		                        <th style="width: 20%;" class="centerAlign" lang="en">
+		                        		Item	
+		                		</th>
+		                        <th style="width: 35%;" class="leftAlign" lang="en">
+		                        		Item Description
+		                        </th>
+		                        <th style="width: 12.5%;" class="centerAlign" lang="en">
+		                        		Cases
+		                        </th>
+		                        <th style="width: 12.5%;" class="centerAlign"  lang="en">
+		                        		Units
+		                        </th>
+		                        <th style="width: 20%;" class="centerAlign"  lang="en">
+			                        	Warehouse
+			                   </th>		
+                   
+                            </tr>
+                           
+                        </table>
+                    </div>
+                    <div class="route_table_height pricelist orderitemheight">
+                        <table   border="0" width="100%" cellpadding="0" cellspacing="0" id="tbl1" data-role="none">
+                          
+                                <tr>
+                                    <td width="20%" class="centerAlign"></td>
+                                    <td width="35%" class="leftAlign"></td>
+                                    <td width="12.5%" class="centerAlign"></td>
+                                    <td width="12.5%" class="centerAlign"></td>
+                                    <td width="20%" class="centerAlign"></td>
+                                </tr>
+                               
+                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="leftbottomMenu">
+            
+                <a href="#" rel="external" id="exit" class="enableText">
+                	<div class="MenuPositionSCLarge">
+                        <div class="MenuTextPos">
+                            <img class="bottomicon" src="../images/icn-exit.png" alt="Exit" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Done</div>
+                    </div>
+                </a>
+              
+            </div>
+        </div>
+        <div id="f1" data-role="footer" class="ui-bar">
+            <div class="footer">
+                <div class="leftfooter">
+                    09 November 2011</div>
+                <div class="rightfooter">
+                    Mirnah Technology Systems</div>
+            </div>
+        </div>
+        <div id="f2" data-role="footer" style="bottom: 0; position: absolute;"> <aside data-pushbar-id="left" class="pushbar from_left">
+		<div class="title"><span data-pushbar-close class="close push_right"></span>
+			<span id="txtroute"></span>
+		</div>
+
+		<ul class="menu">
+		<li style="margin-bottom: 0 !important;" > 
+		<img title="" alt="" src="../images/startday-icon.png" id="day"  class="leftmenu" >
+		 <a href="#"
+						class="ui-btn-active" rel="external" id="day" data-icon="custom"  
+						lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+					<li style="margin-bottom: 0 !important;">
+					 <img title="" alt="" src="../images/Inventoryicon.png" id="inve"  class="leftmenu">
+					 <a href="#" id="inve"
+						rel="external" data-icon="custom" lang="en"
+						onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+					<li style="margin-bottom: 0 !important;">
+					 <img title="" alt="" src="../images/customer-icon.png" id="cust" class="leftmenu">
+					 <a href="#"
+						rel="external" id="cust" data-icon="custom" lang="en"
+						onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+					<li style="margin-bottom: 0 !important;">
+					<img title="" alt="" src="../images/Money-icon.png" id="sett" class="leftmenu">
+					<a href="#"
+						rel="external" id="sett" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+					<li style="margin-bottom: 0 !important;">
+					<img title="" alt="" src="../images/expense-icon.png" id="expe" class="leftmenu">
+					<a href="#"
+						rel="external" id="expe" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/expenseentry.html')">Expenses</a></li>
+					<li style="margin-bottom: 0 !important;">
+					<img title="" alt="" src="../images/information-icon.png" id="info" class="leftmenu" >
+					<a href="#"
+						rel="external" id="info" data-icon="custom" lang="en"  
+						onclick="footerredict('../information/information.html')">Information</a></li>
+					<li style="margin-bottom: 0 !important; ">
+					 <img title="" alt="" src="../images/user-settings-icon.png" id="setup" class="leftmenu">
+					 <a href="#" rel="external" id="setup" data-icon="custom" lang="en"
+						onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+		</ul>
+
+	</aside>
+            <div data-role="navbar" data-iconpos="top" data-grid="f">
+                <ul>
+                    <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="day" data-icon="custom" lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" id="inve" rel="external" data-icon="custom" lang="en" onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" class="ui-btn-active" rel="external" id="cust" data-icon="custom" lang="en">Customer</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="sett" data-icon="custom" lang="en" onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="expe" data-icon="custom" lang="en" onclick="footerredict('../settlement/expenseentry.html')">Expenses</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="info" data-icon="custom" lang="en" onclick="footerredict('../information/information.html')">Information</a></li>
+			        <li style="margin-bottom:0 !important; width:14.0%"><a href="#" rel="external" id="setup" data-icon="custom" lang="en" onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            var platform='';
+            var CaseEnabled;
+            var curr_option;
+            $("#tbl1 tr:odd").addClass('oddRow');
+            $("#tbl1 tr:even").addClass('evenRow');
+            $('label').css({ 'background': '#D1ECFD', 'border': 'none' });
+            $('.ui-btn-inner').css({ 'border-top': 'none' });
+            resizeOrientationWindow();
+            var decimalplace = sessionStorage.getItem("decimalplace"); 
+            var searchTxt="";
+ 		 	$(document).ready(function() 
+ 		 	{
+	 			resizeWindow();
+	 			
+                platform= sessionStorage.getItem("platform");
+                document.addEventListener("deviceready", getItemGroups, false);
+
+                // sujee added side bar ----------------- START ------------------------ 
+
+             	          	          var pushbar = new Pushbar({
+             	      		blur:true,
+             	      		overlay:true,
+             	      	});
+             	          $("#txtroute").text("ROUTE #: " + sessionStorage.getItem("RouteCode")); 
+             	          window.setInterval(function(){
+             	       		var randomColor = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+             	       		$('#txtroute').css({
+             	         			'color' : randomColor,
+             	       		});
+             	     			}, 2000);
+             	          //----------------------------- END -------------------------  
+                CaseEnabled=eval(sessionStorage.getItem("CaseEnabled"));
+               
+                if(CaseEnabled==undefined || CaseEnabled==null){
+                	CaseEnabled=2;
+                }
+                // alert(CaseEnabled);
+                if(CaseEnabled==0){
+                	
+                	$("#tblHeaderContent tr th:eq(2)").remove();
+                    $("#tbl1 tr td:eq(2)").remove();
+                	
+                }else if(CaseEnabled==2){
+                	// alert(CaseEnabled);
+                	$("#tblHeaderContent tr th:eq(3)").remove();
+                    $("#tbl1 tr td:eq(3)").remove();
+                }
+                $("#itemgroup").change(function(){ 
+                	$.mobile.showPageLoadingMsg();
+                	$("#txtSearch").val("");
+                	$("#txtSearch").text("");
+                	getItems();
+    				
+				});
+                
+                
+                $("#txtSearch").keyup(function(){ 
+                	$.mobile.showPageLoadingMsg();
+                	$("#itemgroup").val(0);
+                	$("#itemgroup").selectmenu("refresh");
+                	 searchTxt=$("#txtSearch").val();
+                	getItems();
+    				
+				});
+                
+//                 $("#txtSearch").blur(function(){ 
+//                 	$.mobile.showPageLoadingMsg();
+//                 	$("#itemgroup").val(0);
+//                 	$("#itemgroup").selectmenu("refresh");
+//                 	 searchTxt=$("#txtSearch").val();
+//                 	getItems();
+    				
+// 				});
+                
+                var page = '../customer_opt/orderRequest.html'            
+                
+                $("#Back_inner").attr("href", page);
+				$("#exit").attr("href", page);
+				$("#add").attr("href", page);
+                $(".leftfooter").html(getCurrentDate());
+                
+                $('.ui-body-d').css({ 'background': '#fff' });
+                $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+                $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+                $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+                $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+
+                
+		
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Pricelist'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+				if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                     $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				     $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				     $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				     $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		        }
+		
+				}
+				else
+				{
+				    window.lang.change('en','en');
+				    $("#contentWrapper").attr("dir", "ltr");
+				    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+            });
+	        function getItems()
+	        {
+	        	ClearTable('tbl1');
+	            var itemgroupcode = $('#itemgroup').val();
+	        	$('#groupcode').text($('#itemgroup').val());
+	        	$('#alcode').text('');
+	        	
+	        	if(localStorage.getItem("AddQty") != null)
+	            {
+	        		curr_option = localStorage.getItem("AddQty"); 
+	            }
+	            else
+	            {
+	            	curr_option = "salesqty";
+	            }
+	        	
+	        	if (CaseEnabled==0)
+                {
+	        		 // var qry = "select actualitemcode,CASE WHEN '" +
+						// sessionStorage.getItem("Language") + "' = 'en' THEN
+						// itemdescription ELSE itemshortdescription END as
+						// description,so.salesqty as
+						// Units,im.caseprice,im.defaultsalesprice,im.unitspercase
+						// as UPC from itemmaster im LEFT JOIN salesorderdetail
+						// so on im.actualitemcode=so.itemcode and
+						// visitkey="+sessionStorage.getItem("VisitKey")+" where
+						// im.itemgroupcode="+itemgroupcode;
+	  	       		var qry="select CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE itemshortdescription END as description,so.salesqty as Units,im.caseprice,im.defaultsalesprice,im.unitspercase as UPC,CASE WHEN IFNULL(pd.salescaseprice,0) > 0 THEN pd.salescaseprice ELSE im.caseprice END AS caseprice, CASE WHEN IFNULL(pd.salesprice,0) > 0 THEN pd.salesprice ELSE im.defaultsalesprice END AS price, CASE WHEN IFNULL(pd.returncaseprice,0) > 0 THEN pd.returncaseprice ELSE im.returncaseprice END AS returncaseprice, CASE WHEN IFNULL(pd.returnprice,0) > 0 THEN pd.returnprice ELSE im.defaultreturnprice END AS returnprice,im.actualitemcode as itemcode,im.warehousestock from itemmaster im LEFT JOIN salesorderdetail so ON im.actualitemcode=so.itemcode AND visitkey="+sessionStorage.getItem("VisitKey")+" LEFT JOIN pricingdetail1 pd ON pd.itemcode = actualitemcode AND customerpricingkey in (SELECT IFNULL(customerpricing1.customerpricingkey,0) FROM customerpricing1 JOIN customermaster ON customerpricing1.pricingplankey = customermaster.pricingkey AND customercode = " + sessionStorage.getItem("customerid") + ") WHERE im.itemgroupcode="+itemgroupcode+" order by actualitemcode";
+                }
+	        	else if(CaseEnabled==1){
+	        		
+	        		var searchCondition=" '' ";
+	        		if(searchTxt.trim()!=""){
+	        			
+	        			 searchCondition=" im.itemdescription LIKE '%" + searchTxt
+		        		+ "%' OR im.alternatecode LIKE '%" +searchTxt+ "%' OR im.barcode1 LIKE '%" +searchTxt+ "%' OR im.barcode2 LIKE '%" 
+		        		+searchTxt+ "%' ";
+	        		}
+	        	
+	        		
+	        		var qry = "select DISTINCT CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE"
+	        		+" im.actualitemcode END as actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription"
+	        		+" ELSE itemshortdescription END as description,CAST((so."+curr_option+"/im.unitspercase) AS INT) as cases,"
+	        		+"CAST((so."+curr_option+"%im.unitspercase) AS INT) as Units,im.unitspercase as UPC, CASE WHEN IFNULL(pd.salescaseprice,0) > 0 THEN"
+	        		+" pd.salescaseprice ELSE im.caseprice END AS caseprice, CASE WHEN IFNULL(pd.salesprice,0) > 0 THEN pd.salesprice ELSE"
+	        		+" im.defaultsalesprice END AS price, CASE WHEN IFNULL(pd.returncaseprice,0) > 0 THEN pd.returncaseprice ELSE im.returncaseprice"
+	        		+" END AS returncaseprice, CASE WHEN IFNULL(pd.returnprice,0) > 0 THEN pd.returnprice ELSE im.defaultreturnprice END"
+	        		+" AS returnprice,im.actualitemcode as itemcode,im.warehousestock from itemmaster im  LEFT JOIN salesorderdetail so ON"
+	        		+" im.actualitemcode=so.itemcode AND visitkey="+sessionStorage.getItem("VisitKey")+" LEFT JOIN pricingdetail1 pd ON"
+	        		+" pd.itemcode = actualitemcode AND customerpricingkey in (SELECT IFNULL(customerpricing1.customerpricingkey,0) FROM "
+	        		+"customerpricing1 JOIN customermaster ON customerpricing1.pricingplankey = customermaster.pricingkey AND customercode = " 
+	        		+ sessionStorage.getItem("customerid") + ") WHERE "
+	        		+"CASE WHEN "+itemgroupcode+">0  then  im.itemgroupcode="+itemgroupcode //condition for group searching
+	        		+" WHEN "+ searchCondition+"<>'' THEN "+searchCondition  // condition for text box searching
+	        		+" ELSE im.activeitem=0 END " 
+	        		+" order by actualitemcode";
+	        		
+	        		console.log(qry)
+	        		//alert(qry)
+	  	        }
+                else
+                {
+                	 // var qry = "select actualitemcode,CASE WHEN '" +
+						// sessionStorage.getItem("Language") + "' = 'en' THEN
+						// itemdescription ELSE itemshortdescription END as
+						// description,CAST((so.salesqty/im.unitspercase) AS
+						// INT) as cases,CAST((so.salesqty%im.unitspercase) AS
+						// INT) as
+						// Units,im.caseprice,im.defaultsalesprice,im.unitspercase
+						// as UPC from itemmaster im LEFT JOIN salesorderdetail
+						// so on im.actualitemcode=so.itemcode and
+						// visitkey="+sessionStorage.getItem("VisitKey")+" where
+						// im.itemgroupcode="+itemgroupcode;
+                	   var qry="select CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE itemshortdescription END as description,CAST((so.salesqty/im.unitspercase) AS INT) as cases,CAST((so.salesqty%im.unitspercase) AS INT) as Units,im.unitspercase as UPC, CASE WHEN IFNULL(pd.salescaseprice,0) > 0 THEN pd.salescaseprice ELSE im.caseprice END AS caseprice, CASE WHEN IFNULL(pd.salesprice,0) > 0 THEN pd.salesprice ELSE im.defaultsalesprice END AS price, CASE WHEN IFNULL(pd.returncaseprice,0) > 0 THEN pd.returncaseprice ELSE im.returncaseprice END AS returncaseprice, CASE WHEN IFNULL(pd.returnprice,0) > 0 THEN pd.returnprice ELSE im.defaultreturnprice END AS returnprice,im.actualitemcode as itemcode,im.warehousestock from itemmaster im LEFT JOIN salesorderdetail so ON im.actualitemcode=so.itemcode AND visitkey="+sessionStorage.getItem("VisitKey")+" LEFT JOIN pricingdetail1 pd ON pd.itemcode = actualitemcode AND customerpricingkey in (SELECT IFNULL(customerpricing1.customerpricingkey,0) FROM customerpricing1 JOIN customermaster ON customerpricing1.pricingplankey = customermaster.pricingkey AND customercode = " + sessionStorage.getItem("customerid") + ") WHERE im.itemgroupcode="+itemgroupcode+"  order by actualitemcode";
+      	         }
+	         
+	            if(platform=='iPad')
+	            {
+               			 Cordova.exec(function(result) {                           
+                              ClearTable(); 
+                              if(result.length > 0)
+                              {
+                            	  BindData(result);   
+                              }
+                              
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding promotion list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [qry]);         
+	            }
+	            else if(platform=='Android')
+	            {          
+                		window.plugins.DataBaseHelper.select(qry,function(result)
+                                                     {
+                                                  
+                                                     if(result.array!=undefined)
+                                                     {     
+                                                    	 BindData(result); 
+                                                     }else{
+                                                    	 $.mobile.hidePageLoadingMsg();
+                                                     }
+
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            	}  
+        	}
+            function BindData(result) {
+               
+            	 ClearTable(); 
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                
+                data = result;
+                if (platform == 'Android') {  
+                	
+                	
+                    var array = $.map(data.array, function(item, index) {
+                    	if (CaseEnabled==0)
+                        {
+                          return [[item.actualitemcode,item.description,item.Units,item.warehousestock,item.UPC,item.caseprice,item.price,item.returncaseprice,item.returnprice,item.itemcode]];
+                        
+                        }else if(CaseEnabled==1){
+                          
+                          return [[item.actualitemcode,item.description,item.cases,item.Units,item.warehousestock,item.UPC,item.caseprice,item.price,item.returncaseprice,item.returnprice,item.itemcode,item.warehousestock]];	
+                        	
+                        }else
+                        {
+                          return [[item.actualitemcode,item.description,item.cases,item.warehousestock,item.UPC,item.caseprice,item.price,item.returncaseprice,item.returnprice,item.itemcode,item.warehousestock]];	
+                        }
+                     });
+                    data = array;
+                }
+               // alert(JSON.stringify(data))
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr>";
+                    
+                    for (j = 0; j < CellCount; j++) {  
+                        var c = '';
+                        var temp = '';
+                        
+                        if(j==1){
+                        	if(data[i][1].charAt(0)=='*'){
+                            	temp +=  'class = leftAlignMustStock';
+                          	}else{
+                          		temp +='class = leftAlign';
+                          	}
+                        }
+                        
+                        if(j==0 || j==3){
+                        	temp = " style='text-align:center;padding:0px 10px 0px 10px;'";
+                        }
+                       
+                        if (CaseEnabled==0 || CaseEnabled==2)
+                        {
+                        	
+                        	if(j==2){
+                        		temp =" class='editable centerAlign rowpadding' ";
+                        	}
+                        }else if(CaseEnabled==1){
+                        	
+                        	if(j==2 || j==3){
+                            	temp =" class='editable centerAlign rowpadding' ";
+                            }
+                        }
+                        
+                        c = "<td " + temp + ">" + data[i][j] + "</td>"; 
+                        r += c;
+                    }
+                    r += "</tr>";
+                    
+                    $('#tbl1 tbody').append(r);                    
+                    
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                
+                
+                // Add Cases and units based on condition
+                
+                
+                $('#tbl1 td.editable').click(function(e) {
+                    
+                    e.preventDefault(); 
+                    e.stopPropagation();
+
+                    $("#txtSearch").val("");  //clearing text field for barcode searching
+                    $("#txtSearch").text("");
+                    
+					if(eval($(this).text()) <= 0)
+                    	$(this).text("");                                                   
+                    var input = $("<input type='number'/>").attr('value', $(this).text());
+                    var w = $(this).innerWidth();
+                    w = w - 50 + "px";
+                    if(window.innerWidth>1000){
+                    	input.css('width', w).css('border', '0').css('height', 60).css('font-size',35);
+                    }else{
+                    	input.css('width', w).css('border', '0').css('height', 30).css('font-size', 16);
+                    }
+                    $(this).empty();
+                    $(this).append(input);
+                                                  
+                                                   
+                    input.bind("keyup",function() { return SetNumberMaxLength(this,4) });
+                    input.focusout(function() { 
+                                    var v = parseInt($(input).val(),10);
+                        			$(input).val(v);
+                                    if(ValidateGridCaseUnit(this)) {
+                                        UpdateData(this) 
+                                     } 
+                                   });
+                    $(this).find('input').live("keypress", function(event) { 
+                        if (event.keyCode == 13) {
+                            input.focusout();
+                           
+                        }
+                    });
+                    
+                         input.focus();                          
+                        
+                });
+               
+                $.mobile.hidePageLoadingMsg();   
+            }
+            // Function for bind customer list
+            function getItemGroups()
+            {               
+                if(platform=='iPad')
+           		{ 
+                    Cordova.exec(function(result) { 
+                                  
+                                 
+                                  },
+                                  function(error) {
+                                  alert("Error in binding Category : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  ["select customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1 order by customercode"]);         
+                    
+                }
+             	else if(platform=='Android')
+            	{
+             						window.plugins.DataBaseHelper.select("select itemgroupcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemgroupname ELSE arbitemgroup END as groupname,alternateitemgroupcode from itemgroup order by itemgroupcode",function(result)
+									{	
+             							$('#txtSearch').focus();
+                                            var array = $.map(result.array, function (item, index) {               
+                                                               return [[item.itemgroupcode, item.groupname,item.alternateitemgroupcode]];            					
+                                                        });
+                                             
+                                             result = array;
+                                            
+                                             $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#itemgroup"));
+                                             for(i=0;i<result.length;i++){                    
+                                            	$("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#itemgroup"));                                           
+                                             }
+                                             $("#itemgroup").selectmenu("refresh");
+                                             $('#groupcode').text(result[0][0]);
+                                             $('#alcode').text(result[0][2]);
+                                             getItems();
+                                     },
+                                     function()
+                                     {
+                                    	 	console.warn("Error calling plugin");
+                                     });
+            	}
+            }
+            // Update Quantity according to changes in grid.
+            function UpdateData(obj) {
+                var RowIndex = $(obj).parent().parent().index();
+                var ObjIndex = $(obj).parent().index();
+                $(obj).parent().text(parseInt(CheckIsNaN($(obj).val())));
+                var Cases, Units, UnitsPerCase, ItemCode, RouteCode, CurrQty, Price;
+                if (CaseEnabled==1) {
+                    Cases = eval($("#tbl1 tr:eq(" + RowIndex + ") td:eq(2)").text());
+                    Units = eval($("#tbl1 tr:eq(" + RowIndex + ") td:eq(3)").text());
+                                        
+                    ItemCode = data[RowIndex - 1][10];
+                    UnitsPerCase = data[RowIndex - 1][5];
+                    RouteKey = sessionStorage.getItem("RouteKey");
+                    Cases = (Cases == undefined || Cases == '') ? 0 : parseInt(CheckIsNaN(Cases));
+                    Units = (Units == undefined || Units == '') ? 0 : parseInt(CheckIsNaN(Units));
+                    CurrQty = (parseInt(Cases) * UnitsPerCase) + parseInt(Units);
+                    // navigator.notification.alert(CurrQty + " : " + AvailQty +
+					// " : " + UnitsPerCase);
+                    
+                    Price = eval(data[RowIndex - 1][7]).toFixed(decimalplace);;
+                    salescaseprice1 = eval(data[RowIndex - 1][6]).toFixed(decimalplace);;
+                    returncaseprice1 =eval(data[RowIndex - 1][8]).toFixed(decimalplace);;
+                    returnprice1 = eval(data[RowIndex - 1][9]).toFixed(decimalplace);;
+                    
+                    $("#tbl1 tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty / UnitsPerCase));
+                    $("#tbl1 tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty % UnitsPerCase));
+                    
+                 
+                    // Over
+                          
+                    HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,salescaseprice1,returncaseprice1,returnprice1);                
+                }
+                else if(CaseEnabled==0){
+                    Units = eval($("#tbl1 tr:eq(" + RowIndex + ") td:eq(2)").text());
+                                        
+                    ItemCode = data[RowIndex - 1][9];
+                    UnitsPerCase = data[RowIndex - 1][4];
+                    RouteKey = sessionStorage.getItem("RouteKey");
+                    Units = (Units == undefined || Units == '') ? 0 : parseInt(Units);
+                    CurrQty = parseInt(Units);
+                    
+                    Price =eval(data[RowIndex - 1][6]).toFixed(decimalplace);;
+                    salescaseprice1 = eval(data[RowIndex - 1][5]).toFixed(decimalplace);;
+                    returncaseprice1 = eval(data[RowIndex - 1][7]).toFixed(decimalplace);;
+                    returnprice1 =eval(data[RowIndex - 1][8]).toFixed(decimalplace);;
+                    $("#tbl1 tr:eq(" + RowIndex + ") td:eq(3)").text(CheckIsNaN(Total.toFixed(decimalplace)));
+                    
+                    // Over
+                    HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,salescaseprice1,returncaseprice1,returnprice1);        
+				}else if(CaseEnabled==2){
+                	Cases = eval($("#tbl1 tr:eq(" + RowIndex + ") td:eq(2)").text());
+                	
+                    Units = 0;
+                                        
+                    ItemCode = data[RowIndex - 1][9];
+                    UnitsPerCase = data[RowIndex - 1][4];
+                    RouteKey = sessionStorage.getItem("RouteKey");
+                    Cases = (Cases == undefined || Cases == '') ? 0 : parseInt(CheckIsNaN(Cases));
+                    
+                    CurrQty = (parseInt(Cases) * UnitsPerCase) + parseInt(Units);
+                    // navigator.notification.alert(CurrQty + " : " + AvailQty +
+					// " : " + UnitsPerCase);
+                    
+                    Price =eval(data[RowIndex - 1][6]).toFixed(decimalplace);;
+                    salescaseprice1 = eval(data[RowIndex - 1][5]).toFixed(decimalplace);;
+                    returncaseprice1 =eval(data[RowIndex - 1][7]).toFixed(decimalplace);;
+                    returnprice1 =eval(data[RowIndex - 1][8]).toFixed(decimalplace);;
+                    
+                    $("#tbl1 tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty / UnitsPerCase));
+                  
+                    // Over
+                    HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,salescaseprice1,returncaseprice1,returnprice1);                
+                
+                }
+            }
+            
+            function HasEntry(ItemCode, RouteKey, VisitKey, CurrQty, Price,salescaseprice1,returncaseprice1,returnprice1) {
+                var res = true;
+                var Qry = "SELECT COUNT(*) as totalcount FROM salesorderdetail where itemcode=" + ItemCode + " and visitkey=" + VisitKey
+                if(platform=='iPad')
+           		{ 
+                    Cordova.exec(function(result) {
+                        CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, result,salescaseprice1,returncaseprice1,returnprice1)
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else{
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        var res = $.map(result.array, function(item, index) {
+                            return [[item.totalcount]];
+                        });
+                      
+                        CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, res[0][0],salescaseprice1,returncaseprice1,returnprice1);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, result,salescaseprice1,returncaseprice1,returnprice1) {  
+                anytimetabclick = true;
+                if (result==0) {
+// alert(CurrQty);
+                   if(eval(CurrQty) > 0)
+                   {
+                     Qry = "INSERT INTO salesorderdetail(itemcode,routekey,transactionkey,visitkey,"+curr_option+",istemp,salesprice,issync,salescaseprice,returncaseprice,returnprice,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice,goodreturncaseprice,goodreturnprice) VALUES(" + ItemCode + "," + RouteKey + ",0," + sessionStorage.getItem("VisitKey") + "," + CurrQty + ",'true'," + Price + ",0,"+salescaseprice1+","+returncaseprice1+","+returnprice1+",(SELECT defaultsalesprice FROM itemmaster WHERE actualitemcode=" + ItemCode + "),(SELECT caseprice FROM itemmaster WHERE actualitemcode=" + ItemCode + "),(SELECT defaultreturnprice FROM itemmaster WHERE actualitemcode=" + ItemCode + "),(SELECT returncaseprice FROM itemmaster WHERE actualitemcode=" + ItemCode + "),"+returncaseprice1+","+returnprice1+")";
+                    console.log(Qry)
+                   // alert(Qry)
+                     if(platform=='iPad')
+                	 { 
+                        Cordova.exec(function(result) {
+                          
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);
+                    }
+                    else{
+                        window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                           
+                        },
+					    function() {
+					        console.warn("Error calling plugin");
+					    });
+                    }
+                          }
+                }
+                else {
+                    Qry = "UPDATE salesorderdetail SET "+curr_option+" = " + CurrQty + ",issync=0 where itemcode=" + ItemCode + " and visitkey=" + VisitKey
+// navigator.notification.alert(Qry);
+                    if(platform=='iPad')
+               	 	{ 
+                        Cordova.exec(function(result) {
+                           
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);
+                    }
+                    else{
+                        window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                           
+                        },
+					    function() {
+					        console.warn("Error calling plugin");
+					    });
+                    }
+                }
+                if(eval(sessionStorage.getItem("onHoldOrderInvoice"))==0){
+                	sessionStorage.setItem("onHoldOrderInvoice",1);//dummy value for new orders
+                }
+                 
+
+            }
+            function CheckIsNaN(val)
+            {
+                if(isNaN(val))
+                    return 0;
+                else
+                    return val;
+            }
+            function ClearTable() {
+                
+                $('#groupcode').text('');
+                $('#alcode').text('');
+                $("#tbl1").find('tr').not(":first").remove();
+            }
+         
+     
+/*
+ * @method getSearchResults
+ *Fired when the seach button is clicked
+ */            
+           
+function getSearchResults(){
+	$.mobile.showPageLoadingMsg();
+	$("#itemgroup").val(0);
+	$("#itemgroup").selectmenu("refresh");
+	 searchTxt=$("#txtSearch").val();
+	 getItems();
+}            
+        </script>
+
+    </div>
+</body>
+</html>

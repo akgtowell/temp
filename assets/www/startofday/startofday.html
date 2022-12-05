@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Start of Day</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+<!-- <link href="../css/mobiscroll-1.5.3.css" rel="stylesheet" type="text/css" />-->
+<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+	href="../css/jquery.mobile.simpledialog.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<!--  <link rel="stylesheet"
+	media="only screen and (min-height: 0px) and (max-height: 576px)"
+	href="../css/style_480.css">  -->
+ <link rel="stylesheet"
+	media="only screen and (min-width: 360px) and (max-width: 479px)"
+	href="../css/style_600.css">
+ <link rel="stylesheet"
+	media="only screen and (min-width: 601px) and (max-width: 700px)"
+	href="../css/style_700.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="../css/style_800.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="../css/style_1200.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+	href="../css/style_1400.css"> 
+	
+<link rel="stylesheet" href="../css/en.css" lang="en" />
+<link rel="stylesheet" type="text/css" href="../css/jquery.mobile.simpledialog.css" />
+
+		<link rel="stylesheet" href="../css/boostrap/css/bStyle.css"/>
+        <link rel="stylesheet" href="../css/boostrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/boostrap/css/bootstrap-grid.css"/>
+        <link rel="stylesheet" href="../css/boostrap/css/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" href="../css/boostrap/css/bootstrap.css"/>
+
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+
+<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+<script type="text/javascript" src="../js/common.js"></script>
+
+<!--<script src="../js/mobiscroll-1.5.3.js" type="text/javascript"></script>-->
+
+<script type="text/javascript" src="../js/jquery.mobile.datebox.min.js"></script>
+
+<script src="../LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+
+<script src="../LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript" lang="en"></script>
+<script type="text/javascript" src="../js/jquery.mobile.simpledialog.js"></script>
+	   
+     
+       <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+     </script>
+
+
+<!--    <script type="text/javascript">
+
+        var scrollContent;
+        function loaded() {
+            scrollContent = new iScroll('contentWrapper');
+        }
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+        document.addEventListener('DOMContentLoaded', loaded, false);  
+
+</script>-->
+<link rel="stylesheet" type="text/css" href="../pushbar/milligram.css">
+		<link rel="stylesheet" type="text/css" href="../pushbar/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../pushbar/pushbar.css">
+		<link rel="stylesheet" type="text/css" href="../pushbar/demo.css">
+	<script type="text/javascript" src="../pushbar/pushbar.js"></script>   
+</head>
+<body>
+	<div data-role="page" data-theme="d">
+		<div>
+			<img title="" alt="" src="../images/bg.png" id="background">
+		</div>
+		<div data-role="header" data-position="inline" id="bgclheader">
+<main class="pushbar_main_content">
+	<div class="wrapper">
+			<div class="card_content">
+				<div>
+<!-- 				<button data-pushbar-target="left"  src="../images/icons8-menu-50.png" >Left pushbar</button> -->
+				 <img title="" alt="" data-pushbar-target="left"  src="../images/icons8-menu-50.png" id="setting">
+				 </div>
+			</div>
+	</div>
+</main>				   
+			<div style="float: right;" id="divLogOut">
+				<a href="#" id="lnkLogOut"
+					style="display:none;position: absolute; top: 10px; right: 10px"
+					onclick="OnLogOut()"> <img src="../images/logout.png"
+					width="78px" height="42px" />
+				</a>
+			</div>
+			<a href="../home/home.html" id="Back_inner" rel="external" lang="en">Back</a>
+			<h1 lang="en">Start of Day</h1>
+			<a href="#" id="lang_inner">EN</a>
+		</div>
+		<div data-role="content" class="centerbox ctrbx">
+			<div class="tblBox com_info_div">
+				
+				<div class="info" id="contentWrapper">
+					<table class="table table-bordered bstbltd" style="width:100%">
+						<thead>
+							<tr>
+								<td colspan="2" id="txtHeader" lang="en" ></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="width: 40%;" lang="en"><b>Route #</b></td>
+								<td id="txtRouteCode"></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;" lang="en">Route</td>
+								<td id="txtRouteName"></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;" lang="en">Salesman #</td>
+								<td id="txtSalesmanCode"></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;" lang="en">Salesman</td>
+								<td id="txtSalesmanName"></td>
+							</tr>
+							<tr>
+								<td style="width: 40%; display:none" lang="en">Helper</td>
+								<td style="width: 60%; display:none" lang="en"><div id="txtHelperID"></div></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;" lang="en">Sales Date</td>
+								<td id="dpDate"></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;" lang="en">Vehicle #</td>
+								<td id="txtVehicleNumber"></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;display:none" lang="en">Route Week</td>
+								<td style="width: 40%;display:none" lang="en"><div id="txtRouteWeek"></div></td>
+							</tr>
+							<tr>
+								<td style="width: 40%;" lang="en">Day</td>
+								<td id="txtDay"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+            <div class="leftbottomMenu">
+            
+            	<div class="row">
+            		<div class="col-4">
+            			<div class="card bg-success text-center style="width:100% !important"">
+            				<a href="../home/home.html"  rel="external">
+            					<img  class="bottomicon" src="../images/no.png" alt="Exit" />
+            					<h4 class="text-white">EXIT</h4>
+            				</a>
+            			</div>
+            		</div>
+            		<div class="col-4">
+            			<div class="card bg-success text-center style="width:100% !important"">
+            				<a id="hlinkMessage" href="messages_new.html" rel="external">
+            					<img  class="bottomicon" src="../images/SOD-M.png" alt="Exit" />
+            					<h4 class="text-white">MESSAGE</h4>
+            				</a>
+            			</div>
+            		</div>
+            		<div class="col-4">
+            			<div class="card bg-success text-center style="width:100% !important"">
+            				<a href="#"  rel="external" id="simplestring" onclick="checkStartEndDay(this)">
+            					<img  class="bottomicon" src="../images/SOD-B.png" alt="Begin Day" />
+            					<h4 class="text-white">BEGIN DAY</h4>
+            				</a>
+            			</div>
+            		</div>
+            	</div>
+            
+            	
+            </div>
+            <table id="tblOdoMeter" border="0" cellpadding="2" cellspacing="0" width="100%" style="display: none;">
+                <tr>
+                    <th class="tblHeader captionLabel leftAlign popupTitle" colspan="2" lang="en">
+                        Enter Odometer
+                    </th>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">
+                        &nbsp;
+                    </td>
+                </tr>                
+                <tr class="popupRow">
+                    <td colspan="2"  class="CheckCaption captionLabel leftAlign textWidth" style="margin: 10px;">
+                        <div style="width:100%;float:left">   
+                            <div style="float:left;" lang="en">Last Reading:</div><div style="float:left" id="lastreading" >  </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">
+                        <!--<input id="txtDay1" type="text" pattern="[0-9]*" maxlength="10" class="textWidthOdo textFont" style="margin: 10px;" />-->
+                        <input id="txtDay1" type="tel" maxlength="10" class="textWidthOdo textFont passwordCenter"   />
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td style="width: 50%;">
+                        <input id="btnSubmit" type="button"  value="Ok" class="btnCommission" data-role="none"
+                            onclick="SetStartofDayOdometer();" lang="en" />
+                    </td>
+                    <td style="width: 50%;">
+                        <input id="btnCancel" type="button"  value="Cancel" class="btnCommission" data-role="none"
+                            rel="close" onclick="ClearOdometer('startofday.html');" lang="en" />
+                    </td>
+                </tr>                
+            </table>
+            <table id="tblPassword" border="0" cellpadding="2" cellspacing="0" width="100%;"
+                style="display: none;">
+                <tr>
+                    <th class="tblHeader captionLabel leftAlign popupTitle" colspan="2" lang="en">
+                        Password Entry
+                    </th>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td  colspan="2" colspan="2" class="popupSubTitle" lang="en">                                       
+                        Start of Day
+                    </td>                
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2" lang="en" class="popupInfo">
+                        Please Enter The Security Password
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">
+                        <input id="txtPassword" type="tel" pattern="[0-9]*" value="" maxlength="10" class="textWidth textFont passwordCenter"  />
+                        <label id="lblMessage" lang="en" style="display:none">Enter Correct Password</label> 
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td style="width: 50%;">
+                        <input id="btnSubmit" type="button" value="Submit" onclick="VerifyPassword('btnSubmit','startofday.html',tblOdoMeter.innerHTML);" data-role="none"
+                        lang="en" />
+                    </td>
+                    <td style="width: 50%;">
+                        <input id="btnCancel" type="button" rel="close" value="Cancel" onclick="ClearPassword();"
+                        data-role="none" lang="en" />
+                    </td>
+                </tr>
+            </table>            
+        </div>
+       	<div data-role="footer" id="f1" class="ui-bar">
+			<div class="footer">
+				<div class="leftfooter">09 November 2011</div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+		<div data-role="footer" id="f2" style="bottom: 0; position: absolute;">
+<aside data-pushbar-id="left" class="pushbar from_left">
+		<div class="title">
+		<span id="txtroute"></span>
+		<span data-pushbar-close class="close push_right" id ="leftsidebar"></span>
+		
+
+		</div>
+
+		<ul class="menu">
+		<li style="margin-bottom: 0 !important;" > 
+		<img title="" alt="" src="../images/startday-icon.png" id="day"  class="leftmenu" >
+		 <a href="#"
+						class="ui-btn-active" rel="external" id="day" data-icon="custom"  
+						lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+					<li style="margin-bottom: 0 !important;">
+					 <img title="" alt="" src="../images/Inventoryicon.png" id="inve"  class="leftmenu">
+					 <a href="#" id="inve"
+						rel="external" data-icon="custom" lang="en"
+						onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+					<li style="margin-bottom: 0 !important;">
+					 <img title="" alt="" src="../images/customer-icon.png" id="cust" class="leftmenu">
+					 <a href="#"
+						rel="external" id="cust" data-icon="custom" lang="en"
+						onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+					<li style="margin-bottom: 0 !important;">
+					<img title="" alt="" src="../images/Money-icon.png" id="sett" class="leftmenu">
+					<a href="#"
+						rel="external" id="sett" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+					<li style="margin-bottom: 0 !important;">
+					<img title="" alt="" src="../images/expense-icon.png" id="expe" class="leftmenu">
+					<a href="#"
+						rel="external" id="expe" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/expenseentry.html')">Expenses</a></li>
+					<li style="margin-bottom: 0 !important;">
+					<img title="" alt="" src="../images/information-icon.png" id="info" class="leftmenu" >
+					<a href="#"
+						rel="external" id="info" data-icon="custom" lang="en"  
+						onclick="footerredict('../information/information.html')">Information</a></li>
+					<li style="margin-bottom: 0 !important; ">
+					 <img title="" alt="" src="../images/user-settings-icon.png" id="setup" class="leftmenu">
+					 <a href="#" rel="external" id="setup" data-icon="custom" lang="en"
+						onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+		</ul>
+
+	</aside>
+			<div data-role="navbar" data-iconpos="top" data-grid="f">
+				<ul>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						class="ui-btn-active" rel="external" id="day" data-icon="custom"
+						lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+						rel="external" data-icon="custom" lang="en"
+						onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="cust" data-icon="custom" lang="en"
+						onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="sett" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="expe" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/expenseentry.html')">Expenses</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="info" data-icon="custom" lang="en"
+						onclick="footerredict('../information/information.html')">Information</a></li>
+					<li style="margin-bottom: 0 !important; width: 14.0%"><a
+						href="#" rel="external" id="setup" data-icon="custom" lang="en"
+						onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+    <script type="text/javascript" language="javascript">
+                     //alert($(window).height());
+             //alert($(window).width());
+    
+    
+    var platform = '';
+        window.lang = new jquery_lang_js();
+        $(document).bind("mobileinit", function(){
+        $.mobile.touchOverflowEnabled = true;
+		});
+        
+		 resizeOrientationWindow();	
+        $(document).ready(function() {
+		resizeWindow(); 
+            document.addEventListener("deviceready", getOdometerSettings, false);                
+          var pushbar = new Pushbar({
+        		blur:true,
+        		overlay:true,
+        	});	         								 
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+            $("#txtDay1").ForceNumericOnly();
+               $("#txtroute").text("ROUTE #: " + sessionStorage.getItem("RouteCode")); 
+            window.setInterval(function(){
+           	 
+         		var randomColor = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+         
+         		$('#txtroute').css({
+           			'color' : randomColor,
+         		});
+
+       			}, 2000);           
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+                                                 
+
+            //Date box setting for set width and disabled opacity
+            $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '91%', 'line-height': '4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+            $('.ui-input-datebox input').css({ 'width': '65% !important', 'color': '#999' });
+            $('.ui-disabled').css({ 'opacity': '0.8' });
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('StartofDay' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                
+                    //Set html right alignment for arbic language
+                    $(".centerboxInvReq").attr("dir", "rtl");
+                    
+                    //Set header align                   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+	                //Change current language to english
+	                window.lang.change('en', 'en');
+	
+	                //Set html left alignment for english language    
+	                $(".centerboxInvReq").attr("dir", "ltr");
+	
+	                //Set header align                    
+	                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+
+        });
+        function check()
+        {
+        	PopupPasswordEntry("simplestring",'startofday.html',tblPassword.innerHTML,'startofday.html');
+           
+        }
+        
+        function getOdometerSettings(){
+        
+        
+        	 $.mobile.showPageLoadingMsg();
+             getlastOdometerstart();
+             getLastOdometerRouteMaster();
+      		 getOdometerSetting();
+      		
+        
+        
+        }
+        
+        //Function used for get start of day list
+        function getStartOfDayList()
+        {
+            platform= sessionStorage.getItem("platform");
+            getLoadCount();
+            var selectquery = "select CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN salesman.salesmanname1 ELSE salesman.arbsalesmanname1 END As salesmanname,strftime('%d-%m-%Y',salesman.cdat) as sdate,strftime('%H:%M',salesman.cdat) as stime,salesman.messagekey,ifnull(routemaster.deliveryroute,' ') as deliveryroute,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN routemaster.routename ELSE routemaster.arbroutename END As routename,routemaster.defaultdeliverydays,routemaster.alternateroutecode as vehicleid,strftime('%H:%M',synctime) synctime,routemaster.memo1 as memo1,salesman.alternatesalesmancode as alternatesalesmancode from salesman inner join routemaster on salesman.salesmancode = routemaster.salesmancode left join vanmaster on routemaster.vehiclenumber = vanmaster.vancode where salesman.salesmancode = "+ sessionStorage.getItem("SalesmanCode") +"";        
+            console.log(selectquery);
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {       
+                                //getOdometerSetting();
+                                // getlastOdometerstart();
+                                BindData(result);
+                                //getdata();
+                             
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding start of day list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [selectquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(selectquery,function(result)
+                                                     {
+                                                        var array ;
+                                                        if (result.array != undefined)
+                                                        {
+                                                           array = $.map(result.array, function(item, index) {
+                                                                       
+                                                                       return [[item.salesmanname, item.sdate, item.stime, item.messagekey, item.deliveryroute, item.routename,item.defaultdeliverydays,item.vehicleid,item.synctime,item.memo1,item.alternatesalesmancode]];
+                                                                       });
+                                                        }
+                                                        BindData(array);
+                                                       // getdata();
+                                                     },
+                                                     function()
+                                                     {
+                                                        console.warn("Error calling plugin");
+                                                     });
+            }                
+        }
+        function getLoadCount()
+        {
+               if(localStorage.lastreading == "" || localStorage.lastreading == undefined)
+               {
+                    $("#lastreading").text(0);
+               }
+               else
+               {
+                    $("#lastreading").text(parseInt(localStorage.lastreading));
+               }
+            platform= sessionStorage.getItem("platform");
+            var Qry = "SELECT COUNT(*) cnt FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp = 'false'";
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {                        
+                              if(eval(result[0][0])>0)
+                              $("#divLogOut").hide();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);                
+            }
+            else if(platform == "Android")
+            {                
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     if(eval(result.array[0].cnt)>0)
+                                                     $("#divLogOut").hide();
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        //Function used for bind start of day list
+        function BindData(result)
+        {
+            if(result.length > 0)
+            {
+            	$('#txtHelperID').text(result[0][9]);
+                $("#txtRouteCode").text(sessionStorage.getItem("RouteCode"));
+                $("#txtRouteName").text(result[0][5]);
+                $("#txtSalesmanCode").text(sessionStorage.getItem("SalesmanCode")+"-"+result[0][10]);
+                $("#txtSalesmanName").text(result[0][0]);
+                $("#dpDate").text(getTodayDate());
+                $("#dpTime").text(result[0][8]);
+                $("#dpDeliveryDate").text(getAddDate(parseInt(result[0][6])));
+                $("#txtDeliveryRoute").text(sessionStorage.getItem("RouteCode"));
+               	$("#txtHeader").text(result[0][5]);
+                $("#txtDay").text(getShortDate());
+                $("#txtVehicleNumber").text(result[0][7]);
+                $("#divSalesDate").html(getTodayDate());
+                
+                if(sessionStorage.getItem("beginday") == 1)
+                {
+                     $("#simplestring").attr("onclick","");
+                   
+                    $("#simplestring").css('cursor', 'text');
+                    $("#textBeginDay").addClass('MenuGray');
+                    
+                }
+                           
+                //Check message avilable or not
+                getMessageCount(result[0][3]);
+                
+                
+             
+            }
+            else 
+            {
+                $("#txtRouteCode").text('');
+                $("#txtRouteName").text('');
+                $("#txtSalesmanCode").text('');
+                $("#txtSalesmanName").text('');
+                $("#dpDate").text('');
+                $("#dpTime").text('');
+                $("#dpDeliveryDate").text('');
+                $("#txtDeliveryRoute").text('');
+                $("#txtRouteWeek").text('');
+                $("#txtDay").text('');
+                $("#txtVehicleNumber").text('');
+            }
+            if (platform == 'iPad') {
+                console.log("select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0");
+                Cordova.exec(function(result) {
+                    if (result >0) {
+                        $("#simplestring").attr("onclick", "");
+
+                        $("#simplestring").css('cursor', 'text');
+                        $("#textBeginDay").addClass('MenuGray');
+                        // $("#dpTime").val(result[0][1]);
+                    }
+                    else {
+                        $("#day").attr("onclick", "");
+                        $("#day").addClass('MenuGray');
+
+                        $("#inve").attr("onclick", "");
+                        $("#inve").addClass('MenuGray');
+
+                        $("#cust").attr("onclick", "");
+                        $("#cust").addClass('MenuGray');
+
+                        $("#sett").attr("onclick", "");
+                        $("#sett").addClass('MenuGray');
+
+                        $("#expe").attr("onclick", "");
+                        $("#expe").addClass('MenuGray');
+
+                        $("#info").attr("onclick", "");
+                        $("#info").addClass('MenuGray');
+
+                        $("#setup").attr("onclick", "");
+                        $("#setup").addClass('MenuGray');
+
+
+                    }
+
+                },
+                              function(error) {
+                                  alert("Error in getting salesman : " + error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              ["select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0"]);
+            }
+
+            else if (platform == 'Android') 
+            {
+                window.plugins.DataBaseHelper.select("select max(routekey) routekey from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0", function(result) {
+                    result = $.map(result.array, function(item, index) {
+                        return [[item.routekey]];
+                    });
+                    if (result >0) {
+                        $("#simplestring").attr("onclick", "");
+
+                        $("#simplestring").css('cursor', 'text');
+                        $("#textBeginDay").addClass('MenuGray');
+                        // $("#dpTime").val(result[0][1]);
+                    }
+                    else {
+                        $("#day").attr("onclick", "");
+                        $("#day").addClass('MenuGray');
+
+                        $("#inve").attr("onclick", "");
+                        $("#inve").addClass('MenuGray');
+
+                        $("#cust").attr("onclick", "");
+                        $("#cust").addClass('MenuGray');
+
+                        $("#sett").attr("onclick", "");
+                        $("#sett").addClass('MenuGray');
+
+                        $("#expe").attr("onclick", "");
+                        $("#expe").addClass('MenuGray');
+
+                        $("#info").attr("onclick", "");
+                        $("#info").addClass('MenuGray');
+
+                        $("#setup").attr("onclick", "");
+                        $("#setup").addClass('MenuGray');
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+
+            }
+        }
+        
+        //Below logic is used for get route week
+        function getdata()
+        {           
+           	if(platform=='iPad')
+		    {   
+                
+                Cordova.exec(function(result) {
+                              
+                                                            
+                                        var startDay=result;                                        
+                            
+                                        var today=new Date();                                        
+                            
+                                        var Dates = new Date().getWeek(startDay);
+                              
+                                        var weekStart = Dates[0].toLocaleDateString();
+                                        var weekEnd =Dates[1].toLocaleDateString();
+                                        
+                                        var weekStart =formatDate(Dates[0]);
+                                        var weekEnd =formatDate(Dates[1]);
+                                                              
+                                        weekStart = weekStart+" 00:00:00";
+                                        weekEnd = weekEnd+" 00:00:00";
+                                       
+                                        getdate(weekStart,weekEnd);
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select weekstartday from setup where setupid=1"]);
+			}
+			else if(platform=='Android')
+		    {
+                window.plugins.DataBaseHelper.select("select weekstartday from setup where setupid=1",function(result)
+                                                     {
+	                                                     var startDay=result.array[0].weekstartday;
+	                                              
+	                                                     var today=new Date();                                                     
+	                                                    
+	                                                     var Dates = new Date().getWeek(startDay);
+	                                                     
+	                                                     var weekStart = Dates[0].toLocaleDateString();
+	                                                     var weekEnd =Dates[1].toLocaleDateString();
+	                                                     
+	                                                     var weekStart =formatDate(Dates[0]);
+	                                                     var weekEnd =formatDate(Dates[1]);
+	                                                     
+	                                                     weekStart = weekStart+" 00:00:00";
+	                                                     weekEnd = weekEnd+" 00:00:00";
+	                                                     getdate(weekStart,weekEnd);
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+		    }
+        }
+        
+        function getdate(weekStart,weekEnd)
+        {
+            $("#lastreading").text(parseInt(localStorage.lastreading));
+            $.mobile.hidePageLoadingMsg(); 
+            console.log("select rp32weeknumber from salescalender where weekstartdate='"+weekStart+"' and weekenddate='"+weekEnd+"'");
+           	if(platform=='iPad')
+		    {
+                var abc = Cordova.exec(function(result) {                                       
+                                            $("#txtRouteWeek").val(result);
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select rp32weeknumber from salescalender where weekstartdate='"+weekStart+"' and weekenddate='"+weekEnd+"'"]);
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where weekstartdate='"+weekStart+"' and weekenddate='"+weekEnd+"'",function(result)
+                                                     {
+	                                                     if(result.array!=undefined)
+	                                                     {
+	                                                        $("#txtRouteWeek").text(result.array[0].rp32weeknumber);                                                 
+	                                                     }   
+	                                                     
+	                                                      getStartOfDayList();
+	                                                                                                      
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }  
+        }
+        
+        Date.prototype.getWeek = function(start)
+        {            
+            //Calcing the starting point
+            start = start || 0;
+            var today = new Date(this.setHours(0, 0, 0, 0));
+            
+            var day = (7+today.getDay()-start)%7;
+            
+            var date = today.getDate() - day;
+            
+            // Grabbing Start/End Dates
+            var StartDate = new Date(today.setDate(date));
+            //var EndDate = new Date(today.setDate(date + 6));
+            var EndDate = new Date(StartDate.getTime()+6*24*60*60*1000);
+            return [StartDate, EndDate];
+        }
+        
+        function formatDate(d)
+        {
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth();
+            var curr_year = d.getFullYear();
+            curr_month =curr_month + 1;
+            
+            if(curr_month<10)
+            curr_month = "0"+curr_month;
+            
+            if(curr_date<10)
+            curr_date = "0"+curr_date;
+            
+            return curr_year+ "-" +curr_month+ "-" + curr_date;
+        }
+        
+        //End route week logic
+        
+        
+        //Function used for get odometer setting
+        function getOdometerSetting()
+        {
+            
+            var selectquery = '';
+            getPassword();
+            selectquery = "select ifnull(promptodominput,0) as promptodominput,ifnull(enablestartdaydatetimeedit,0) as enablestartdaydatetimeedit from routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +"";
+            
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {                         
+                              if(result.length > 0)
+                              {                              
+                                localStorage.odosetting = result[0][0];
+                                localStorage.daytimeedit = result[0][1];
+                              localStorage.daytimeedit=1;
+                                if(localStorage.daytimeedit == 1)
+                                {
+                                    $("#dpDate").datebox("enable");
+                                    $("#dpTime").datebox("enable");
+                                }   
+                               
+                              }
+                              getdata();
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in bind odometer setting : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [selectquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(selectquery,function(result)
+                                                     {
+                                                     var array ;
+                                                     if (result.array != undefined)
+                                                     {
+                                                        localStorage.odosetting = result.array[0].promptodominput;
+                                                        localStorage.daytimeedit = result.array[0].enablestartdaydatetimeedit;
+                                                        
+                                                        if(localStorage.daytimeedit == 1)
+                                                        {
+                                                            $("#dpDate").removeAttr("disabled");
+                                                            $("#dpTime").removeAttr("disabled");
+                                                        }       
+                                                     }
+                                                     getdata();
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+        }
+        
+        
+        //Function used for message count
+        function getMessageCount(messagevalue)
+        {       
+            var selectquery = '';
+            
+            
+            selectquery = "select count(messagekey) as messagekey,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message1 ELSE arbmessageline1 END As message1,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message2 ELSE arbmessageline2 END As message2,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message3 ELSE arbmessageline3 END As message3,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message4 ELSE arbmessageline4 END As message4 from salesmanmessages where messagekey = "+ messagevalue +"";          
+            
+            console.log(selectquery);
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {     
+                           
+                              if(result != "")
+                              {                 
+                                    var messageCount = 0;
+                              
+                                    if(result[0][0] != 0)
+                                    {                         
+                                        if(result[0][1] != "")
+                                            messageCount += 1;
+                                        else if(result[0][2] != "") 
+                                            messageCount += 1;
+                                        else if(result[0][3] != "") 
+                                            messageCount += 1;
+                                        else if(result[0][4] != "") 
+                                            messageCount += 1;                        
+                                    }
+                                     
+                                    if(messagevalue > 0 && messageCount > 0)
+                                    {
+                                        if(localStorage.getItem("MessageFlag") != 1)
+                                        {                           
+                                            $("#simplestring").click(function() { return false; });
+                                            $("#simplestring").css('cursor', 'text');
+                                            $("#textBeginDay").addClass('MenuGray');
+                                        }            
+                                    }
+                                    else 
+                                    {                             
+                                        $("#hlinkMessage").attr("href","#");
+                                        $("#hlinkMessage").css('cursor', 'text');
+                                        $("#messageid").addClass('MenuGray');
+                                    }                                                
+                              }
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in bind odometer setting : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [selectquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(selectquery,function(result)
+                                                     {
+                                                        result = $.map(result.array, function(item, index) {
+                                  						    return [[item.messagekey,item.message1,item.message2,item.message3,item.message4]];
+                          							    });
+                          							    if (result != "") {
+                          							        var messageCount = 0;
+                          							        if (result[0][0] != 0) {
+                          							            if (result[0][1] != "")
+                              							            messageCount += 1;
+                          							            else if (result[0][2] != "")
+                              							            messageCount += 1;
+                          							            else if (result[0][3] != "")
+                              							            messageCount += 1;
+                              							        else if (result[0][4] != "")
+                              							            messageCount += 1;
+                              							    }
+                          							        if (messagevalue > 0 && messageCount > 0) {
+                          							            if (localStorage.getItem("MessageFlag") != 1) {
+                          							                $("#simplestring").click(function() { return false; });
+                          							                $("#simplestring").css('cursor', 'text');
+                          							                $("#textBeginDay").addClass('MenuGray');
+                          							                $("#simplestring").attr("onclick","");
+                          							            }else{
+                          							            	
+                          							              $("#simplestring").attr("onclick","checkStartEndDay(this)");
+                          							            }
+                          							        }
+                          							        else {
+                              							        $("#hlinkMessage").attr("href", "#");
+                          							            $("#hlinkMessage").css('cursor', 'text');
+                          							            $("#messageid").addClass('MenuGray');
+                          							        }   
+                          							     }                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+        }
+        
+        function checkPromptOdometerSetting()
+        {
+            if(localStorage.odosetting == 1)
+            {
+                if(sessionStorage.getItem("OdometerValue") == 0 || sessionStorage.getItem("OdometerValue") == "undefined" || sessionStorage.getItem("OdometerValue") == null)
+                {
+                	getLangText("Please enter odometer reading");
+                }
+                else 
+                {
+                    window.location = "../home/home.html";
+                }
+            }
+            else 
+            {
+                window.location = "../home/home.html";
+            }
+        }
+        
+        function passwordPopup(id)
+        {
+          
+            //PopupPasswordEntry("lnkStart",'startofday.html',tblPassword.innerHTML,'startofday.html')
+            
+            $("#lnkStart").trigger('onclick');
+            
+        }
+         
+        function checkStartEndDay(obj)
+        {
+           
+            //var selectquery = "select (select count(*) from startendday where data=1) setting1,(select count(*) from startendday where routeclosed=0) setting2,(select count(*) from startendday where data=2) setting3";
+            var selectquery="select (select count(*) from startendday where data=1) setting1,(select count(*) from startendday where routeclosed=0) setting2,(select count(*) from startendday where data=2) setting3,(select CASE WHEN ifnull((select sum(quantity) from inventorytransactiondetail where transactiontypecode=5),0)!=ifnull(inventoryreportcontrol,0) THEN 1 ELSE 0 END cnt from routemaster where routecode="+ sessionStorage.getItem('RouteCode') +") setting4,(select CASE WHEN ifnull((select sum(totunits) from startingloaddetail where routecode="+ sessionStorage.getItem('RouteCode') +"),0)!=ifnull(enablestockicon,0) THEN 1 ELSE 0 END cnt from routemaster where routecode="+ sessionStorage.getItem('RouteCode') +") setting5";
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {                         
+                             
+                            
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in bind odometer setting : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [selectquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(selectquery,function(result)
+                {
+                	
+                	if(result.array != undefined)
+                	{
+	                    result = $.map(result.array, function(item, index) {
+	                        return [[item.setting1, item.setting2, item.setting3,item.setting4,item.setting5]];
+	                    });
+	                   
+	                    var setting1=eval(result[0][0]);
+	                    var setting2=eval(result[0][1]);
+	                    var setting3=eval(result[0][2]);
+	                    var setting4=eval(result[0][3]);
+	                    var setting5=eval(result[0][4]);
+	                    if(setting1>0){
+	                    	getLangText("Please do sync before starting new trip"); 
+                        	window.location = "../sync.html";
+	                    }else if(setting2>0){
+	                    	navigator.notification
+							.alert("Start Of Day Already Done.");
+	                    }else if(setting3>0){
+	                    	getLangText("Senddata Not Done For Previous Trip.Please Go To Senddata screen in Utitlity."); 
+                        } // sujee commented 11/12/2019 
+	                    /*else if(setting4>0){
+	                    	getLangText("Stock Not Downloaded Completely,Please Resync.");
+	                    	window.location = "../sync.html";
+                        }*/
+                       /*  sujee commented to be checked later 27/05/2018
+                       else if(setting5>0){
+                        	getLangText("Load Not Downloaded Completely,Please Resync.");
+                        	window.location = "../sync.html";
+                        }*/
+	                    else{
+	                    	displayPrompt(obj);
+	                    }
+	                    
+                	}
+                	                             
+                 },
+                 function()
+                 {
+                 console.warn("Error calling plugin");
+                 });
+            }                	
+        
+        
+        
+        
+        
+        } 
+         
+         
+        //Check prompt setting on then open prompt otherwise not
+        function displayPrompt(obj)
+        {
+                   
+            $("#simplestring").attr("onclick","");                   
+            $("#simplestring").css('cursor', 'text');
+            $("#textBeginDay").addClass('MenuGray');
+           
+            if(localStorage.odosetting == 1 || localStorage.odosetting == 2) //Prompt setting on     
+            {
+                PopupStartdayOdometer($(obj).attr("id"),'../home/home.html',tblOdoMeter.innerHTML);
+               
+                //Update route master table
+                updateRouteMaster();
+            }
+            else //Prompt setting off
+            {
+                
+               // alert("tess");
+                updateRouteMaster();
+                removeFile();
+                
+                var mydate = new Date();
+                
+                var thehour = mydate.getHours();
+                var theminut = mydate.getMinutes();
+                var thesecond = mydate.getSeconds();
+                
+                var time=thehour+":"+theminut+":"+thesecond;
+                var data = {};
+                data["routecode"] = sessionStorage.getItem('RouteCode');       
+                data["salesmancode"] = sessionStorage.getItem('SalesmanCode');
+                data["routestartodometer"] = 0;
+                data["startdate"]=getTabletDate();
+                data["starttime"]=time;
+				data["deviceid"]=sessionStorage.getItem("DeviceID");
+				data["ver"]='2.11';
+                //alert(data);
+                data = JSON.stringify(data);
+				//alert(data);
+                //alert(data);
+				//url: wsurl + "ws/senddata?startday=["+ data +"]",
+                $.ajax({
+                       type: "get",
+                       url: wsurl + "ws/senddata?startday=["+ data +"]",
+                       data: "{}",
+                       cache: false,
+                       timeout: 10000,
+                       crossDomain: true,
+                       success: function(data) {
+                       if(data.length > 0)
+                       {
+                            data = JSON.parse(data); 
+                            if(data["startday"][0].status == 0)
+                            {
+                            insertOffOdometer(data);
+                           }
+                            else
+                            getLangText("Start Of Day Already Done.");
+                       }
+                       
+                       },
+                       error: function(qXHR, textStatus, errorThrown) {
+							alert("Start day prompt off failure: " + qXHR.status + ":" + textStatus + " " + errorThrown);
+                       }
+                });             
+              
+            }           
+            
+        }
+        // retrieves root file system entry
+        var getFileSystemRoot = (function() {
+ 
+            // private
+            var root;
+            
+            // one-time retrieval of the root file system entry
+            var init = function() {
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                    function(fileSystem) {
+                        root = fileSystem.root;
+                    }, 
+                    onFileSystemError);
+            };
+            document.addEventListener("deviceready", init, true); 
+ 
+            // public function returns private root entry
+            return function() {
+                return root;
+            };
+        }()); // execute immediately
+        
+        function onFileSystemError(error) {
+            var msg = 'file system error: ' + error.code;
+           // navigator.notification.alert(msg, null, 'File System Error');
+        }
+    
+        function removeFile() {
+            var root = getFileSystemRoot();
+            var remove_file = function(entry) {
+                entry.remove(function() {
+                   // navigator.notification.alert(entry.toURI(), null, 'Entry deleted');                    
+                }, onFileSystemError);
+            };
+            
+            // retrieve a file and truncate it
+            root.getFile('readme.txt', {create: false}, remove_file, onFileSystemError);
+        } 
+   
+        //Insert record into start end day table when prompt setting off 
+        function insertOffOdometer(data)
+        {
+            
+            var insertquery = '';
+            sessionStorage.setItem("RouteKey",data["startday"][0].routekey);
+              
+            var mydate = new Date();
+                
+            var thehour = mydate.getHours();
+            var theminut = mydate.getMinutes();
+            var thesecond = mydate.getSeconds();
+                
+            var time=thehour+":"+theminut+":"+thesecond;
+              
+            insertquery = "insert into startendday(routekey,routecode,salesmancode,routestartdate,routestarttime,routestartodometer,routeclosed) values("+ data["startday"][0].routekey +","+ sessionStorage.getItem('RouteCode') +","+ sessionStorage.getItem('SalesmanCode') +",'"+ getTabletDate() +"','"+ time +"',0,0)";
+            console.log(insertquery);
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {       
+                              
+                                  sessionStorage.setItem("beginday",1); 
+                                  
+                                    Checkbatch(data["startday"][0].routekey);
+                                  //window.location = "../home/home.html";
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in insert start end day : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [insertquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(insertquery,function(result)
+                                                     {                                                     
+                                                        sessionStorage.setItem("beginday",1);
+                                                        Checkbatch(data["startday"][0].routekey);
+                                                        //window.location = "../home/home.html";
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+            
+        }
+        
+        //Update route master delivery route field 
+        function updateRouteMaster()
+        {
+            updatequery = "update routemaster set deliveryroute = "+ $('#txtDeliveryRoute').text() +" where routecode = "+ sessionStorage.getItem('RouteCode') +"";           
+            
+            
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {           
+                              
+                              //alert("Update record successfully");                          
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in insert start end day : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [updatequery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(updatequery,function(result)
+                                                     {                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+        }
+        //Function for get password
+        function getPassword()
+        {   
+            
+            if(platform=='iPad')
+		    {
+                Cordova.exec(function(result) {                                             
+                              
+                              if (result.length > 0) {
+                              var i = result[0][0]; 
+                              
+                              localStorage.editpass = ((result[0][0] == 0) ? 0 : result[0][i]);
+                              localStorage.LoadPassword2 = result[0][5];
+                              
+                              
+                              }
+                              else {
+                              localStorage.editpass = "";
+                              localStorage.LoadPassword2 = "";
+                              
+                              }
+                              
+                              },
+                              function(error) {
+                              alert("Error in getting Password : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select passwordarray01,password1,password2,password3,password4,password5,passwordarray15,passwordarray11,promptodominput,passwordarray14 From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +""]);         
+            }
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select("select passwordarray01,password1,password2,password3,password4,password5,passwordarray15,passwordarray11,promptodominput,passwordarray14 From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +"",function(result)
+                                                     {
+                                                     
+                                                     result = $.map(result.array, function (item, index) {
+                                                                    
+                                                                    return [[item.passwordarray01, item.password1,item.password2,item.password3,item.password4,item.password5,item.passwordarray15,item.passwordarray11,item.passwordarray14]];
+                                                                    });                                                     
+                                                     if (result.length > 0) {
+                                                     var i = result[0][0]; 
+                                                     
+                                                     localStorage.editpass = ((result[0][0] == 0) ? 0 : result[0][i]);
+                                                     localStorage.LoadPassword2 = result[0][5];
+                                                     
+                                                     
+                                                     }
+                                                     else {
+                                                     localStorage.editpass = "";
+                                                     localStorage.LoadPassword2 = "";
+                                                     
+                                                     }
+                                                    
+                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+            
+        }
+        
+        function OnLogOut()
+        {
+            var msg = "Are You Sure To Logout?";
+            navigator.notification.confirm(msg,function(action){
+                if(action == 1)
+                {
+                    
+                                           var data = {};
+                                           data["routecode"] = sessionStorage.getItem('RouteCode');       
+                                           data["routekey"] = sessionStorage.getItem('RouteKey');
+                                        data["status"] = 0;    
+                                           
+                                           data = JSON.stringify(data);
+                                           
+                                           $.ajax({
+                                                  type: "get",
+                                                  url: wsurl + "ws/logout?logout=["+ data +"]",
+                                                  data: "{}",
+                                                  cache: false,
+                                                    timeout: 10000,
+                                                  crossDomain: true,
+                                                  success: function(data) {  
+                                                  // alert(data);
+                                                  updatequery = "delete from startendday where routecode = "+ sessionStorage.getItem('RouteCode') +" and routekey="+sessionStorage.getItem('RouteKey');           
+                                                  
+                                                  
+                                                  if(platform=='iPad')
+                                                  {
+                                                  
+                                                  Cordova.exec(function(result) {           
+                                                                sessionStorage.clear();
+                                                                localStorage.clear();
+                                                                window.location = "../index.html";                       
+                                                                
+                                                                },
+                                                                function(error) {
+                                                                navigator.notification.alert("Error in insert start end day : " + error);
+                                                                },
+                                                                "PluginClass", 
+                                                                "GetdataMethod", 
+                                                                [updatequery]);         
+                                                  }
+                                                  else if(platform=='Android')
+                                                  {          
+                                                  window.plugins.DataBaseHelper.select(updatequery,function(result)
+                                                                                       {                                                     
+                                                                                       sessionStorage.clear();
+                                                                                       localStorage.clear();
+                                                                                       window.location = "../index.html";
+                                                                                       },
+                                                                                       function()
+                                                                                       {
+                                                                                       console.warn("Error calling plugin");
+                                                                                       });
+                                                  }        
+                                                  
+                                                  
+                                                  },
+                                                  error: function(qXHR, textStatus, errorThrown) {
+                                                  alert("Start day prompt off failure: " + qXHR.status + ":" + textStatus + " " + errorThrown);
+                                                  }
+                                                  });  
+                    
+                                           }
+                                           });
+        }
+        
+       
+        
+    </script>
+
+</body>
+</html>

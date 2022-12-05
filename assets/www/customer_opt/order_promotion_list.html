@@ -1,0 +1,2360 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for promotion list
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Promotion List</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+	 <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/en.css" lang="en" />
+    <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+    <link type="text/css" href="../css/jquery.mobile.datebox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+        href="../css/style_1400.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+        href="../css/style_1200.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px)"
+        href="../css/style_800.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 601px) and (max-width: 699px)"
+        href="../css/style_700.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 320px) and (max-width: 600px)"
+        href="../css/style_600.css" />
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+    <script type="text/javascript" src="../js/common.js"></script>
+
+    <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+    </script>
+
+    <script type="text/javascript" src="../js/jquery.mobile.datebox.min.js"></script>
+
+    <script src="../LangJS/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+
+    <script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript" lang="en"></script>
+        <link rel="stylesheet" type="text/css" href="../css/jquery.mobile.simpledialog.css" />
+        
+        <script type="text/javascript" src="../js/jquery.mobile.simpledialog.js"></script>
+
+</head>
+<body>
+    <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+        <div>
+            <img title="" alt="" src="../images/bg.png" id="background">
+        </div>
+        <div data-role="header" data-position="inline" id="bgclheader">
+            <!--<a href="index.html"   id="Back_inner">test</a>-->
+            <a id="Back_inner" href="#" rel="external" lang="en" onclick="localStorage.promooveride=0">Back</a>
+            <h1 lang="en">
+                Customer Promotion</h1>
+            <a href="#" id="lang_inner">EN</a>
+        </div>
+        <div data-role="content" class="centerbox">
+            <div class="book_detail_div">
+               <div style="width:30%;display:none;" id="promodiv"><input id="btnSubmit1" type="button" value="Override" onclick="PopupPasswordEntry(this.id,'order_promotion_list.html',tblPassword.innerHTML,'order_promotion_list.html');" lang="en"/></div>
+                <div class="tblBox tbltd" id="contentWrapper">
+                    <div class="tblHeader">
+                        <table id="tblHeaderContent" width="100%" cellpadding="10" cellspacing="0">
+                            <tr>
+                                <th width="10%">
+                                </th>
+                                <th width="20%" class="leftAlign" lang="en">
+                                    Promo Key
+                                </th>
+                                <th width="60%" lang="en" class="leftAlign">
+                                    Promo Description
+                                </th>
+                                <th width="15%">
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="route_table_height item promotionheight">
+                        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="tbl1" data-role="none">
+                            <tbody>
+                                <tr>
+                                    <th width="10%">
+                                    </th>
+                                    <th width="20%">
+                                    </th>
+                                    <th width="60%">
+                                    </th>
+                                    <th width="15%">
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="leftbottomMenu com_info_right">
+                <a id="linkDetail" href="#" class="enableText" rel="external" onclick="checkRecordCount(this.id)">
+                    <div class="MenuPosition">
+                        <div class="MenuTextPos">
+                            <img src="../images/detail.png" alt="Option" /></div>
+                        <div id="lnktextDetail" class="MenuTextPos MenuText" lang="en">
+                            Details</div>
+                    </div>
+                </a><a id="linkContinue" href="#" class="enableText" rel="external" onclick="deleteRecord(this.id)">
+                    <div class="MenuPosition">
+                        <div class="MenuTextPos">
+                            <img src="../images/icn-select.png" alt="Add" /></div>
+                        <div id="lnktextContinue" class="MenuTextPos MenuText" lang="en">
+                            Continue</div>
+                    </div>
+                </a><a href="#" class="enableText" rel="external" id="exit" onclick="localStorage.promooveride=0">
+                    <div class="MenuPosition ">
+                        <div class="MenuTextPos">
+                            <img src="../images/icn-exit.png" alt="Exit" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Cancel</div>
+                    </div>
+                </a>
+            </div>
+            <table id="tblPassword" border="0" cellpadding="2" cellspacing="0" width="100%;"
+                style="display: none;">
+                <tr>
+                    <th class="tblHeader captionLabel leftAlign popupTitle" colspan="2" lang="en">
+                        Password Entry
+                    </th>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td  colspan="2" colspan="2" class="popupSubTitle" lang="en">                                       
+                        Promotion
+                    </td>                
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2" lang="en" class="popupInfo">
+                        Please Enter The Security Password
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">
+                        <input id="txtPassword" type="number" pattern="[0-9]*" value="" maxlength="10" class="textWidth textFont passwordCenter" />
+                        <label id="lblMessage" lang="en" style="display:none">Enter Correct Password</label> 
+                    </td>
+                </tr>
+                <tr class="popupRow">
+                    <td style="width: 50%;">
+                        <input id="btnSubmit" type="button" value="Submit" onclick="VerifyPassword('btnSubmit','order_promotion_list.html',tblPassword.innerHTML);" data-role="none"
+                        lang="en" />
+                    </td>
+                    <td style="width: 50%;">
+                        <input id="btnCancel" type="button" rel="close" value="Cancel" onclick="ClearPassword();"
+                        data-role="none" lang="en" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="f1"  data-role="footer" class="ui-bar">
+            <div class="footer">
+                <div class="leftfooter">
+                    09 November 2011</div>
+                <div class="rightfooter">
+                    Mirnah Technology Systems</div>
+            </div>
+        </div>
+        <div id="f2"  data-role="footer" style="bottom: 0; position: absolute;">
+            <div data-role="navbar" data-iconpos="top" data-grid="f">
+                <ul>
+                    <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="day" data-icon="custom" lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" id="inve" rel="external" data-icon="custom" lang="en" onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" class="ui-btn-active" rel="external" id="cust" data-icon="custom" lang="en">Customer</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="sett" data-icon="custom" lang="en" onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="expe" data-icon="custom" lang="en" onclick="footerredict('../settlement/expenseentry.html')">Expenses</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="info" data-icon="custom" lang="en" onclick="footerredict('../information/information.html')">Information</a></li>
+			        <li style="margin-bottom:0 !important; width:14.0%"><a href="#" rel="external" id="setup" data-icon="custom" lang="en" onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+            var data = null,dataItem = null;
+            var index = 0;
+            var countRecord = 0;
+            var promotionAmount = 0;
+             var platform='';
+            var itemIndex = 0,rangeBasis = 0,promotionTypeCode = 0,rangeLow = 0,rangeHigh = 0,dataAmount = null,repeatingrange=0;
+            var totalpromo = 0,totalfree = 0,promotiontype = 0,totalInvoiceAmount = 0;
+            var flag = false;
+            var arrayPlan = new Array();
+            var tempPlan = 0;
+            var count1 = 0;
+            var enforcepromotion=0;
+            var flagpromo = false,flagpromo2 = false;
+            var isOrderEditing=false;
+
+        window.lang = new jquery_lang_js();
+            
+            var dataInvoice = null,invoiceIndex = 0,totalinvoice=0;
+	
+	 $("#tbl1").click(function() { });
+	$('label').css({ 'background': '#D1ECFD','border':'none' });
+	$('.ui-btn-inner').css({ 'border-top':'none' });
+	$("#tbl1 td").css({ 'height':'25px' });
+
+	resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+		  if(sessionStorage.getItem("referrer")=="../inventory/onholdorders.html"){
+			  isOrderEditing=true;
+		  }
+                      
+	    document.addEventListener("deviceready", getPromotionList, false);
+
+	    //$("#startdate").val(getTodayDate());
+
+	    if (localStorage.custpro == 'order') {
+	        var page = '../customer_opt/orderRequest.html'
+
+	    }
+	    else {
+	        var page = '../customer_opt/orderRequest.html';
+
+	    }
+	    $("#Back_inner").attr("href", page);
+	    $("#exit").attr("href", page);
+
+                                           
+	    $("#tbl1 tr").live('click', function() {
+            if(enforcepromotion==0 || localStorage.promooveride==1)
+            {
+                          
+	        // $(this).siblings().removeClass('clicked');
+	        index = $(this).index();
+                           promoenforce = eval(data[index - 1][9]); 
+                           
+                           if(promoenforce == 0)
+                           {
+ $(this).toggleClass('clicked');
+	        if ($("#check_" + (index)).css('display') == 'block') {
+	            $("#check_" + (index)).css({ "display": "none" });
+                if(countRecord != 0)
+                {           
+                    DeletePromotionDetail(index);
+                }
+                tempPlan = eval(data[index - 1][0]);           
+                           for(i=0;i < arrayPlan.length;i++)
+                           {
+                                if(arrayPlan[i] == tempPlan)
+                                {
+                                    arrayPlan.splice(i,1);    
+                                    //alert(arrayPlan);
+                                }
+                           }
+	            // $("#check_"+(i+1)).attr("checked",false);
+	        }
+            else if($.inArray(data[index - 1][0],arrayPlan) >= 0)
+                           {
+                           tempPlan = eval(data[index - 1][0]);           
+                           for(i=0;i < arrayPlan.length;i++)
+                           {
+                           if(arrayPlan[i] == tempPlan)
+                           {
+                           arrayPlan.splice(i,1);    
+                           //alert(arrayPlan);
+                           }
+                           }
+            }
+	        else {
+	           // $("#check_" + (index)).css({ "display": "block" });                           
+	            
+                promotionTypeCode = eval(data[index - 1][3]);                     
+                rangeBasis = eval(data[index - 1][5]);     
+                arrayPlan.push(eval(data[index - 1][0]));  
+                           if(rangeBasis==3)
+                           getItemAmountFixed(index,promotionTypeCode,rangeBasis);
+                           else
+                           getItemAmount(index,promotionTypeCode,rangeBasis);          
+               
+	            //$("#check_"+(i+1)).attr("checked",true);
+	        }
+                           }
+                           }
+	    });
+                      
+
+	    $(".leftfooter").html(getCurrentDate());
+
+	    $('.ui-body-d').css({ 'background': '#fff' });
+	    $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+	    $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+	    $('.ui-input-datebox input').css({ 'width': '76% !important', 'color': '#999' });
+
+	    var lan = sessionStorage.getItem("Language");
+	    window.lang.run(lan);
+
+	    if (sessionStorage.getItem("Language") != "en") {
+
+	        window.lang.change('Promolist' + lan, lan);
+	        window.lang.change('Footer' + lan, lan);
+	        if (lan == "AR") {
+	            $("#contentWrapper").attr("dir", "rtl");
+	            $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	            $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	            $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	            $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	        }
+
+	    }
+	    else {
+	        window.lang.change('en', 'en');
+	        $("#contentWrapper").attr("dir", "ltr");
+	        $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	        $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	        $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	        $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }
+	});
+            
+            //Function for bind promotion list
+            function getPromotionList()
+            {   
+            	getPassword();
+                platform= sessionStorage.getItem("platform");
+            	console.log("select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc,promokeydetail.plannumber,promokeydetail.promotiontypecode,promokeydetail.assignmentnumber,ifnull(promokeydetail.rangebasis,0),customermaster.enforcepromotion,promokeydetail.assignmentgroup,promokeydetail.qualificationgroup,promoplandetail.enforcepromotion as promoenforce from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ sessionStorage.getItem("customerid") +"");
+            	if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {                           
+                                    if(result.length > 0)
+                                    {
+                                        BindData(result);                                        
+                              if(result[0][6]!=1 || localStorage.promooveride==1)
+                              {
+                              selectPromotionList();             
+                              }
+                              else if(result[0][6]==1)
+                              {
+                              $("#promodiv").css({'display':'block'});
+                              }  
+                                    }
+                                    else {
+                                        if (countRecord == 0) {
+                                            $("#linkDetail").attr("href", "#");                                            
+                                            $("#lnktextDetail").addClass('MenuGray');
+                                            $("#linkDetail").attr("onclick", "#");
+
+                                            $("#linkContinue").attr("href", "#");
+                                            $("#linkContinue img").attr("src", "../images/icn-select-gray.png");
+                                            $("#lnktextContinue").addClass('MenuGray');
+                                            $("#linkContinue").attr("onclick", "#");
+                                        }                                     
+                                        //navigator.notification.alert("No record found for selected customer");
+                                    }
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in binding promotion list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc,promokeydetail.plannumber,promokeydetail.promotiontypecode,promokeydetail.assignmentnumber,ifnull(promokeydetail.rangebasis,0) as rangebasis,customermaster.enforcepromotion,promokeydetail.assignmentgroup,promokeydetail.qualificationgroup,promoplandetail.enforcepromotion as promoenforce from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber join promoplandetail on promoplandetail.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ sessionStorage.getItem("customerid") +""]);         
+                }
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.select("select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc,promokeydetail.plannumber,promokeydetail.promotiontypecode,promokeydetail.assignmentnumber,ifnull(promokeydetail.rangebasis,0) as rangebasis,customermaster.enforcepromotion,promokeydetail.assignmentgroup,promokeydetail.qualificationgroup,promoplandetail.enforcepromotion as promoenforce from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber join promoplandetail on promoplandetail.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ sessionStorage.getItem("customerid") +"",function(result)
+					{
+				 		if(result.array!=undefined)
+						{     
+							BindData(result);                                        
+                                                         if(result.array[0][6]!=1 || localStorage.promooveride==1)
+                                                         {
+                                                         selectPromotionList();             
+                                                         }    
+                                                         else if(result.array[0][6]==1)
+                                                         {
+                                                         $("#promodiv").css({'display':'block'});
+                                                         }
+                        }
+                        else
+                        {
+                            if (countRecord == 0) {
+                                $("#linkDetail").attr("href", "#");                               
+                                $("#lnktextDetail").addClass('MenuGray');
+                                $("#linkDetail").attr("onclick", "#");
+
+                                $("#linkContinue").attr("href", "#");
+                                $("#linkContinue img").attr("src", "../images/icn-select-gray.png");
+                                $("#lnktextContinue").addClass('MenuGray');
+                                $("#linkContinue").attr("onclick", "#");
+                            }
+                            //navigator.notification.alert("No record found for selected customer");
+                        }               
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+            	}                
+            }
+            
+            //Bind data dynamically
+            function BindData(result) {
+
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                data = result;
+                if (platform == 'Android') {                    
+                    var array = $.map(data.array, function(item, index) {
+
+                        return [[item.plannumber, item.plandesc, item.plannumber, item.promotiontypecode, item.assignmentnumber, item.rangebasis,item.enforcepromotion,item.assignmentgroup,item.qualificationgroup,item.promoenforce]];
+                    });
+
+                    data = array;
+                }
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr class='contentFont'>";
+                    
+                    for (j = 1; j <= CellCount; j++) {  
+                        var c = '';
+                        var temp = (j == 2 || j == 3) ? 'class = leftAlign' : '';
+                        if(j == 1)
+                        {
+                            c = "<td>" + "<img src='../images/check_1.png' height='25' style='display:none;' id = check_"+ (i + 1)  +" />" + "</td>";                           
+                        }
+                        else
+                        {
+                            if (j == CellCount)
+                                temp += " class = 'leftAlign last'";
+                            
+                            if(j==4)
+                                c = "<td " + temp + ">0</td>"; 
+                            else
+                                c = "<td " + temp + ">" + data[i][j - 2] + "</td>"; 
+                            
+                           
+                        }
+                        r += c;
+                    }
+                    r += "</tr>";
+                  
+                    $('#tbl1 tbody').append(r);                    
+                   
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                enforcepromotion=data[0][6];
+                $('#tbl1 tr').each(function(){
+                                   if($(this).index() > 0)
+                                   {
+                                   index= $(this).index();
+                                   promoenforce = data[index - 1][9];
+                                   if(promoenforce==1)
+                                   {
+                                   deleteallpromotion();
+                                   $(this).toggleClass('clicked',true);
+                                   index= $(this).index();
+                                   promotionTypeCode = eval(data[index - 1][3]);           
+                                   rangeBasis = eval(data[index - 1][5]);     
+                                   arrayPlan.push(eval(data[index - 1][0]));  
+                                   if(rangeBasis==3)
+                                   getItemAmountFixed(index,promotionTypeCode,rangeBasis);
+                                   else
+                                   getItemAmount(index,promotionTypeCode,rangeBasis);
+                                   }
+                                   
+                                   }
+                                   });
+                if(enforcepromotion==1)
+                {
+                    if(localStorage.promooveride!=1)
+                    {
+                    $('#tbl1 tr').each(function(){
+                                       if($(this).index() > 0)
+                                       {
+                                       deleteallpromotion();
+                                       $(this).toggleClass('clicked',true);
+                                       index= $(this).index();
+                                       promotionTypeCode = eval(data[index - 1][3]);           
+                                       rangeBasis = eval(data[index - 1][5]);     
+                                       arrayPlan.push(eval(data[index - 1][0]));  
+                                       promoenforce = data[index - 1][9];
+                                   if(promoenforce!=1)
+                                   {
+                                       if(rangeBasis==3)
+                                       getItemAmountFixed(index,promotionTypeCode,rangeBasis);
+                                       else
+                                       getItemAmount(index,promotionTypeCode,rangeBasis);  
+                                       }
+                                       }
+                                       
+                                       });
+                    }
+                }
+                              
+                
+            }
+            function deleteallpromotion()
+            {
+            console.log("delet");
+                if(platform=='iPad')
+           		{
+                    Cordova.exec(function(result) {
+                                  
+                                  //navigator.notification.alert("Delete record successfully");
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error deleting record from promotion detail");
+                                  },
+                                  "PluginClass", 
+                                  "InsertUpdateMethod", 
+                                  ["Delete from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+  sessionStorage.getItem('VisitKey') +""]);                 
+                    
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert("Delete from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+  sessionStorage.getItem('VisitKey') +"",function(result) {
+                                                         
+                                                         //navigator.notification.alert("Delete record successfully");
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+				}
+            }
+      function deleteRecord(id)
+      {
+            var deleteinvoice ="update salesorderdetail set promoamount = 0,promoqty=0,freesampleqty = 0 where visitkey = "+ sessionStorage.getItem('VisitKey') +" and routekey ="+ sessionStorage.getItem('RouteKey') +"";
+          
+         
+                
+            if(platform=='iPad')
+            {                     
+                Cordova.exec(function(result) {
+                                deleteheaders(id);             
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in update record : " + error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [deleteinvoice]);
+            }
+            else if(platform=='Android')
+            {
+                    window.plugins.DataBaseHelper.insert(deleteinvoice,function(result)
+                    {
+                             deleteheaders(id);                                 
+                    },
+                    function()
+                    {
+                         console.warn("Error calling plugin");
+                    });
+            }
+        }
+        function deleteheaders(id)
+        {
+                var deleteheader ="update salesorderheader set totalpromoamount = 0,issync=0 where visitkey = "+ sessionStorage.getItem('VisitKey') +" and routekey ="+ sessionStorage.getItem('RouteKey') +"";
+            
+            
+            if(platform=='iPad')
+            {  
+                           
+                Cordova.exec(function(result) {
+                                UpdateRecord(id);           
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in update record : " + error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [deleteheader]);
+            }
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.insert(deleteheader,function(result)
+                                                     {
+                                                        UpdateRecord(id); 
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+                
+        }
+       function UpdateRecord(id)
+       {                       
+           var ID = id; 
+          
+            if(countRecord != 0)
+            {   
+            
+                
+            var selectQry = "select promotiondetail.itemcode,promotiondetail.promotiontypecode,promotiondetail.promotionquantity,promotiondetail.promotionamount,((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As CurrentInvoiceAmount,promotiondetail.promotionplannumber,0 as promotionkey,promotiondetail.assignmentkey,promotiondetail.rowid,oldpromotionamount,promotiondetail.rangelow,promotiondetail.repeatingrange from promotiondetail left join salesorderdetail on promotiondetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = "+ sessionStorage.getItem('RouteKey') +" and salesorderdetail.visitkey = "+ sessionStorage.getItem('VisitKey') +" left join itemmaster on itemmaster.actualitemcode = promotiondetail.itemcode where promotiondetail.routekey ="+ sessionStorage.getItem('RouteKey') +" and promotiondetail.visitkey = "+ sessionStorage.getItem('VisitKey') +" order by promotiondetail.promotiontypecode,promotiondetail.promotionplannumber";
+                                     
+            
+                if(platform=='iPad')
+                {     
+                    Cordova.exec(function(result) {
+                          if (result.length > 0) {
+                                  dataInvoice = result;                                  
+                                  totalinvoice = dataInvoice.length;
+                                  UpdateInvoiceDetail(0);
+                                  
+                                  for(invoiceIndex = 0;invoiceIndex < dataInvoice.length;invoiceIndex++)
+                                  {                                
+                                    //UpdateInvoiceDetail();
+                                    //UpdatePromotionDetail();
+                                  }
+                                                 
+                          }                         
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in update record : " + error);
+                          },
+                          "PluginClass",
+                          "GetdataMethod",
+                          [selectQry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectQry,function(result)
+                                                         {
+                                                            if(result.array!=undefined)
+                                                            {         
+                                                         
+                                                                var result = $.map(result.array, function(item, index) {
+                                                                           
+                                                                           return [[item.itemcode, item.promotiontypecode, item.promotionquantity, item.promotionamount, item.CurrentInvoiceAmount,item.promotionplannumber,item.promotionkey,item.assignmentkey,item.rowid,item.oldpromotionamount]];
+                                                                        });
+                                                            }
+                                                         
+                                                            if (result.length > 0) 
+                                                            {
+                                                                dataInvoice = result;
+                                                         
+                                                                totalinvoice = dataInvoice.length;
+                                                                UpdateInvoiceDetail(0);
+                                                         
+                                                                for(invoiceIndex = 0;invoiceIndex < dataInvoice.length;invoiceIndex++)
+                                                                {                                
+                                                                    //UpdateInvoiceDetail();
+                                                                    //UpdatePromotionDetail();
+                                                                }
+                                                                //checkRecordCount('linkContinue');                       
+                                                            }             
+                                                                
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                
+            }
+            else 
+            {
+               checkRecordCount(ID);               
+            }
+            
+        }
+            
+         
+         //Function for check at least one record select or not   
+         function checkRecordCount(id)
+            {
+               
+                var base = window.location.toString().substring(0, window.location.toString().lastIndexOf("/")) + "/"; 
+                if(countRecord != 0)
+                {                 
+                    if(id == "linkContinue")
+                    {                 
+                          sessionStorage.setItem('orderarrayplan','');
+                         window.location = base + "order_promotion_review.html" ;
+                    }
+                    if(id == "linkDetail")
+                    {   
+                        localStorage.prodetail = 'order';
+                        sessionStorage.setItem('orderarrayplan',arrayPlan);
+                       
+                        window.location = base + "order_promotion_detail.html" ;
+                    }
+                   
+                }
+                else
+                {
+                    if(id == "linkDetail")
+                    { 
+                        //navigator.notification.alert("At least one record required for promotion");
+                        //return false
+                        localStorage.prodetail = 'order';
+                        sessionStorage.setItem('orderarrayplan', arrayPlan);
+
+                        window.location = base + "order_promotion_detail.html";
+                    }
+                    else 
+                    {
+                        localStorage.sign='order_promo_list'; 
+                        sessionStorage.setItem('orderarrayplan','');
+                        if(sessionStorage.getItem("SignEnabled") != 1 && !isOrderEditing)
+                            window.location = base + "../customer/signature.html" ;
+                        else
+                        {                            
+                            window.location = base + '../customer_opt/orderdetail.html';
+                        }
+                    }
+                }
+            }
+            
+            //Function for delete promtion detail for passed plan number
+            function DeletePromotionDetail(index)
+            {
+            	if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {
+                                 countRecord -= 1;                                
+                                 $("#tbl1 tr:eq("+ (index) +") td:eq(3)").html(0);  
+                               $("#tbl1 tr:eq("+ (index) +") td:eq(0) img").css({"display":"none"});
+                                 UpdatePromoDetailOrder();
+                                //navigator.notification.alert("Delete record successfully");
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error deleting record from promotion detail");
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod", 
+                              ["Delete from promotiondetail where promotionplannumber ="+ data[index - 1][2] +" and routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+  sessionStorage.getItem('VisitKey') +""]);                 
+                    
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert("Delete from promotiondetail where promotionplannumber ="+ data[index - 1][2] +"",function(result) {
+            		countRecord -= 1;
+                    $("#tbl1 tr:eq("+ (index) +") td:eq(3)").html(0);  
+                    $("#tbl1 tr:eq("+ (index) +") td:eq(0) img").css({"display":"none"});
+						//navigator.notification.alert("Delete record successfully");
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}
+            }
+            
+            function getPromotionAssignmentAdvancedFixed(index,promotionTypeCode,rangeBasis,dataAmount) {
+                var assignQry = '';
+                flag = false;
+                 pAmount=1;
+                for(j=0;j<dataAmount.length;j++)
+                {
+                    salesqty = eval(dataAmount[j][0]);
+                    salesamount = eval(dataAmount[j][1]);
+                    itemcode = eval(dataAmount[j][2]);
+                    itemqty = eval(dataAmount[j][3]);
+                    repeatingrange = eval(dataAmount[j][4]);
+                    
+                    if(eval(salesqty)%eval(itemqty) == 0)
+                    {
+                        pRange = parseInt(eval(salesqty)/eval(itemqty));
+                        flag = true;   
+                        if(j==0)
+                        {
+                            pAmount=pRange;
+                        }
+                        else
+                        {
+                            if(eval(pRange) < eval(pAmount))
+                            {
+                                pAmount=pRange;
+                            }
+                        }
+                        
+                    }
+                }
+                getItemDetailFixed(index,flag,promotionTypeCode,rangeBasis,repeatingrange,0,pAmount);
+            }
+          //Function for getting prmotion amount for passed assignementnumber
+            function getPromotionAssignmentAdvanced(index,promotionTypeCode,rangeBasis) {
+
+                var assignQry = '';
+                flag = false;
+               
+
+                dataAmount[0][0] = eval(dataAmount[0][0]);
+                dataAmount[0][1] = eval(dataAmount[0][1]);
+                
+                //alert(rangeBasis);
+                //alert(dataAmount[0][0]);
+                //alert(dataAmount[0][1]);               
+                if (rangeBasis == 2) {
+                    assignQry = "select promotionamount,rangelow,rangehigh,repeatingrange," + dataAmount[0][1] + " as qty from promotionassignmentadvanced where assignmentnumber = " + data[index - 1][4] + " and CASE WHEN repeatingrange = 0 THEN " + dataAmount[0][1] + " between rangelow and rangehigh ELSE " + dataAmount[0][1] + " >= rangelow END";
+                }
+                else {
+                    assignQry = "select promotionamount,rangelow,rangehigh,repeatingrange," + dataAmount[0][0] + " as qty from promotionassignmentadvanced where assignmentnumber = " + data[index - 1][4] + " and  CASE WHEN repeatingrange = 0 THEN " + dataAmount[0][0] + " between rangelow and rangehigh ELSE " + dataAmount[0][0] + " >= rangelow END";
+                }
+                
+                console.log(assignQry);
+                
+            	if(platform=='iPad')
+           		{
+           		    Cordova.exec(function(result) {
+           		        if (result.length > 0) {
+           		            promotionAmount = result[0][0];
+           		            rangeLow = result[0][1];
+           		            rangeHigh = result[0][2];
+                                  repeatingrange = result[0][3];
+                                  amount = result[0][4];
+                                  if(promotionTypeCode==7)
+                                  {
+                                  if(repeatingrange==1)
+                                  {
+                                  
+                                  var pr = parseInt(amount/parseInt(rangeLow));
+                                  promotionAmount = eval(pr)*eval(promotionAmount);
+                                  
+                                  }
+                                  }
+                            flag = true;       
+                                  if (rangeBasis == 4)
+                                  {
+                                  getItemDetailFixed(index,flag,promotionTypeCode,rangeBasis,repeatingrange,rangeLow,pr);
+                                  }
+                                  else 
+                                  {
+                                  getItemDetail(index,flag,promotionTypeCode,rangeBasis,repeatingrange,rangeLow,promotionAmount);
+                                  }
+                                   
+           		        }
+           		        else {
+           		            promotionAmount = 0;
+           		            rangeLow = 0;
+           		            rangeHigh = 0;
+                            flag = false;  
+           		        }
+           		    },
+                              function(error) {
+                                  navigator.notification.alert("Error in getting promotion amount : " + error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [assignQry]);
+            	}
+            	else if(platform=='Android')
+            	{
+            	    window.plugins.DataBaseHelper.select(assignQry, function(result)
+					{
+						var array = $.map(result.array, function (item, index) {               
+                		return [[item.promotionamount, item.rangelow, item.rangehigh,item.repeatingrange,item.qty]];
+           				});
+           				
+           				result = array;
+						if(result.length > 0)
+                        {                     
+                                promotionAmount = result[0][0];                
+                                rangeLow  = result[0][1];
+                                rangeHigh = result[0][2];
+                                                         repeatingrange = result[0][3];
+                                                         amount = result[0][4];
+                                                         if(promotionTypeCode==7)
+                                                         {
+                                                         if(repeatingrange==1)
+                                                         {
+                                                         
+                                                         var pr = parseInt(amount/parseInt(rangeLow));
+                                                         promotionAmount = eval(pr)*eval(promotionAmount);
+                                                         
+                                                         }
+                                                         }
+                                flag = true;                          
+                                                         if (rangeBasis == 4)
+                                                         {
+                                                         getItemDetailFixed(index,flag,promotionTypeCode,rangeBasis,repeatingrange,rangeLow,pr);
+                                                         }
+                                                         else 
+                                                         {
+                                                         getItemDetail(index,flag,promotionTypeCode,rangeBasis,repeatingrange,rangeLow,promotionAmount);    
+                                                         }
+                        }
+                        else
+                        {
+                                promotionAmount = 0;
+                                rangeLow  = 0;
+                                rangeHigh  = 0;
+                                flag = false;                           
+                        }
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}
+            }
+            function getItemDetailFixed(index,flag,promotionTypeCode,rangeBasis,repeatingrange,rangeLow,promotionAmount)
+            {
+                if(repeatingrange==0)
+                var pqty = "productgroupdetail.itemqty";
+                else
+                var pqty = "("+promotionAmount+" *productgroupdetail.itemqty)";  
+                
+                var itemqry="select productgroupdetail.itemcode,"+pqty+" As NewInvoiceAmount, (itemqty * itemmaster.defaultsalesprice) As SalesAmount,ifnull(itemqty,0) As SalesQty,(itemqty * productgroupdetail.promopcprice) As promoamount,promocaseprice,promopcprice from promokeydetail inner join productgroupdetail on  promokeydetail.assignmentgroup = productgroupdetail.groupnumber  inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                if(platform=='iPad')
+           		{
+                    Cordova.exec(function(result) {    
+                                  
+                                  
+                                  if(result.length > 0)
+                                  {     
+                                  
+                                  itemIndex = 0;
+                                  dataItem = result;
+                                  
+                                  /* if(rangeBasis == 2)
+                                   {
+                                   if(eval(dataAmount[0][1]) >= eval(rangeLow) && eval(dataAmount[0][1]) <= eval(rangeHigh))
+                                   {
+                                   flag = true;
+                                   }
+                                   
+                                   }
+                                   else 
+                                   {
+                                   if(eval(dataAmount[0][0]) >= eval(rangeLow) && eval(dataAmount[0][0]) <= eval(rangeHigh))
+                                   {
+                                   flag = true;
+                                   }
+                                   
+                                   }*/
+                                  
+                                  if(flag == true)
+                                  {
+                                  for(itemIndex = 1;itemIndex <= dataItem.length ;itemIndex++)
+                                  {                               
+                                  InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow);
+                                  //UpdateInvoiceDetail();
+                                  }
+                                  //navigator.notification.alert("Insert record successfully");
+                                  countRecord += 1;
+                                  }
+                                  else 
+                                  {
+                                  //navigator.notification.alert("Promotion not avialable for this assignment number");    
+                                  }
+                                  }
+                                  else
+                                  {                                        
+                                  //navigator.notification.alert("Item detail not found for assignment number");
+                                  }
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error in binding item list: " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  /*["select productgroupdetail.itemcode,Case When "+ rangeBasis +" = 1 Then (( ifnull((salesorderdetail.salesqty * salesorderdetail.salesprice),0)  - ifnull((salesorderdetail.returnqty * salesorderdetail.returnprice),0) - ifnull((salesorderdetail.damagedqty * salesorderdetail.returnprice),0)) * "+ promotionAmount +")  Else ((ifnull((salesorderdetail.salesqty),0) - ifnull((salesorderdetail.returnqty),0) - ifnull((salesorderdetail.damagedqty),0)) + "+ promotionAmount +")  End As NewInvoiceAmount,Case When "+ rangeBasis +" = 1 Then (ifnull((salesorderdetail.salesqty * salesorderdetail.salesprice),0)  - ifnull((salesorderdetail.returnqty * salesorderdetail.returnprice),0) - ifnull((salesorderdetail.damagedqty * salesorderdetail.returnprice),0)) Else ((ifnull((salesorderdetail.salesqty),0) - ifnull((salesorderdetail.returnqty),0) - ifnull((salesorderdetail.damagedqty),0))) End As oldinvoiceamount from promokeydetail inner join productgroupdetail on  promokeydetail.assignmentnumber = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = "+ sessionStorage.getItem('RouteKey') +" and salesorderdetail.visitkey  = "+ sessionStorage.getItem('VisitKey') +" where promokeydetail.assignmentnumber = "+ data[index - 1][4] +"  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = "+ sessionStorage.getItem('customerid') +")"]);*/
+                                  [itemqry]);
+                }
+            	else if(platform=='Android')
+            	{
+            	    window.plugins.DataBaseHelper.select(itemqry, function(result)
+                                                         {              
+                                                         var array = $.map(result.array, function (item, index) {               
+                                                                           return [[item.itemcode, item.NewInvoiceAmount, item.SalesAmount,item.SalesQty,item.promoamount,item.promocaseprice,item.promopcprice]];
+                                                                           });
+                                                         
+                                                         result = array;   
+                                                         if(result.length > 0)
+                                                         {     
+                                                         //var flag = false;
+                                                         itemIndex = 0;
+                                                         dataItem = result;
+                                                         /* if(rangeBasis == 2)
+                                                          {
+                                                          if(eval(dataAmount[0][1]) >= eval(rangeLow) && eval(dataAmount[0][1]) <= eval(rangeHigh))
+                                                          {
+                                                          flag = true;
+                                                          }                                                         
+                                                          
+                                                          }
+                                                          else 
+                                                          {
+                                                          if(eval(dataAmount[0][0]) >= eval(rangeLow) && eval(dataAmount[0][0]) <= eval(rangeHigh))
+                                                          {
+                                                          flag = true;
+                                                          }
+                                                          
+                                                          }*/
+                                                         
+                                                         if(flag == true)
+                                                         {
+                                                         for(itemIndex = 1;itemIndex <= dataItem.length ;itemIndex++)
+                                                         {                               
+                                                         InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow);
+                                                         //UpdateInvoiceDetail();
+                                                         }
+                                                         //navigator.notification.alert("Insert record successfully");
+                                                         countRecord += 1;
+                                                         }
+                                                         else 
+                                                         {
+                                                         // navigator.notification.alert("Promotion not avialable for this assignment number");    
+                                                         }
+                                                         }
+                                                         else
+                                                         {                                        
+                                                         //navigator.notification.alert("Item detail not found for assignment number");
+                                                         } 
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+				}
+            }
+            //Function for getting item detail for passed item number
+            function getItemDetail(index,flag,promotionTypeCode,rangeBasis,repeatingrange,rangeLow,promotionAmount)
+            {                 //alert("getItemDetail");                         
+               // alert('data[index - 1][7]' +data[index - 1][7]);
+                if(data[index - 1][7]==1)
+                {
+                    if(promotionTypeCode==0)
+                    {
+                        var itemqry="select CAST(salesorderdetail.itemcode as VARCHAR)as itemcode," + promotionAmount + " As NewInvoiceAmount, (CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As SalesAmount,ifnull(salesqty,0) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As promoamount from promokeydetail inner join salesorderdetail on salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = salesorderdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                    }
+                    else if(promotionTypeCode == 5 || promotionTypeCode == 6)
+                    {
+                        var itemqry="select group_concat(salesorderdetail.itemcode) as itemcode," + promotionAmount + " As NewInvoiceAmount, sum((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As SalesAmount,sum(ifnull(salesorderdetail.salesqty,0)) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As promoamount from promokeydetail inner join salesorderdetail on salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = salesorderdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + " group by promokeydetail.plannumber";
+                    }
+                    else if(promotionTypeCode == 7)
+                    {
+                    	// sujee comented as 21/12/2021 
+                       // var itemqry="select -1," + promotionAmount + " As NewInvoiceAmount, 0,0,0 from promokeydetail  where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                        var itemqry="select CAST(salesorderdetail.itemcode as VARCHAR)as itemcode," + promotionAmount + " As NewInvoiceAmount, (CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As SalesAmount,ifnull(salesorderdetail.salesqty,0) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As promoamount from promokeydetail inner join salesorderdetail on salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = salesorderdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                    }
+                    else
+                    {
+                        var itemqry="select CAST(salesorderdetail.itemcode as VARCHAR)as itemcode," + promotionAmount + " As NewInvoiceAmount, (CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As SalesAmount,ifnull(salesorderdetail.salesqty,0) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As promoamount from promokeydetail inner join salesorderdetail on salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = salesorderdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                    }
+                }
+                else{
+                if(promotionTypeCode==0)
+                {
+                    var itemqry="select CAST (productgroupdetail.itemcode as VARCHAR) as itemcode," + promotionAmount + " As NewInvoiceAmount, (CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As SalesAmount,ifnull(salesqty,0) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * productgroupdetail.promocaseprice) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * productgroupdetail.promopcprice) As promoamount from promokeydetail inner join promotionassignmentadvanced on promotionassignmentadvanced.assignmentnumber=promokeydetail.assignmentnumber inner join productgroupdetail on  promotionassignmentadvanced.promotionamount = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                }
+                else if(promotionTypeCode == 5 || promotionTypeCode == 6)
+                {
+                    var itemqry="select group_concat(productgroupdetail.itemcode) as itemcode," + promotionAmount + " As NewInvoiceAmount, sum((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As SalesAmount,sum(ifnull(salesorderdetail.salesqty,0)) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * productgroupdetail.promocaseprice) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * productgroupdetail.promopcprice) As promoamount from promokeydetail inner join productgroupdetail on  promokeydetail.assignmentgroup = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + " group by promokeydetail.plannumber";
+                }
+                    else if(promotionTypeCode == 7)
+                    {
+                        var itemqry="select CAST(productgroupdetail.itemcode  as VARCHAR) as itemcode," + promotionAmount + " As NewInvoiceAmount, (" + promotionAmount + " * defaultsalesprice) As SalesAmount,ifnull(" + promotionAmount + ",0) As SalesQty,(" + promotionAmount + " * productgroupdetail.promopcprice) As promoamount from promokeydetail inner join productgroupdetail on  promokeydetail.assignmentgroup = productgroupdetail.groupnumber  inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";  
+                    }
+	                else
+	                {
+	                    var itemqry="select CAST(productgroupdetail.itemcode  as VARCHAR) as itemcode," + promotionAmount + " As NewInvoiceAmount, (CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice) As SalesAmount,ifnull(salesorderdetail.salesqty,0) As SalesQty,(CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * productgroupdetail.promocaseprice) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * productgroupdetail.promopcprice) As promoamount from promokeydetail inner join productgroupdetail on  promokeydetail.assignmentgroup = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+	                }
+                }
+                console.log(itemqry);
+                //alert(itemqry);
+                if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {    
+                              
+                              
+                              if(result.length > 0)
+                              {     
+                                   
+                                    itemIndex = 0;
+                                    dataItem = result;
+                              
+                                   /* if(rangeBasis == 2)
+                                    {
+                                        if(eval(dataAmount[0][1]) >= eval(rangeLow) && eval(dataAmount[0][1]) <= eval(rangeHigh))
+                                        {
+                                            flag = true;
+                                        }
+                                        
+                                    }
+                                    else 
+                                    {
+                                        if(eval(dataAmount[0][0]) >= eval(rangeLow) && eval(dataAmount[0][0]) <= eval(rangeHigh))
+                                        {
+                                            flag = true;
+                                        }
+                                        
+                                    }*/
+                              
+                                    if(flag == true)
+                                    {
+                                        for(itemIndex = 1;itemIndex <= dataItem.length ;itemIndex++)
+                                        {                               
+                              if(eval(dataItem[itemIndex-1][0]) ==-1)
+                              {              
+                              InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow);
+                              }
+                              else
+                              {
+                              if(eval(dataItem[itemIndex-1][3]) > 0)
+                               InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow);
+                              }
+                                            //UpdateInvoiceDetail();
+                                        }
+                                        //navigator.notification.alert("Insert record successfully");
+                                        countRecord += 1;
+                                    }
+                                    else 
+                                    {
+                                        //navigator.notification.alert("Promotion not avialable for this assignment number");    
+                                    }
+                              }
+                              else
+                              {                                        
+                                //navigator.notification.alert("Item detail not found for assignment number");
+                              }
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in binding item list: " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              /*["select productgroupdetail.itemcode,Case When "+ rangeBasis +" = 1 Then (( ifnull((salesorderdetail.salesqty * salesorderdetail.salesprice),0)  - ifnull((salesorderdetail.returnqty * salesorderdetail.returnprice),0) - ifnull((salesorderdetail.damagedqty * salesorderdetail.returnprice),0)) * "+ promotionAmount +")  Else ((ifnull((salesorderdetail.salesqty),0) - ifnull((salesorderdetail.returnqty),0) - ifnull((salesorderdetail.damagedqty),0)) + "+ promotionAmount +")  End As NewInvoiceAmount,Case When "+ rangeBasis +" = 1 Then (ifnull((salesorderdetail.salesqty * salesorderdetail.salesprice),0)  - ifnull((salesorderdetail.returnqty * salesorderdetail.returnprice),0) - ifnull((salesorderdetail.damagedqty * salesorderdetail.returnprice),0)) Else ((ifnull((salesorderdetail.salesqty),0) - ifnull((salesorderdetail.returnqty),0) - ifnull((salesorderdetail.damagedqty),0))) End As oldinvoiceamount from promokeydetail inner join productgroupdetail on  promokeydetail.assignmentnumber = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = "+ sessionStorage.getItem('RouteKey') +" and salesorderdetail.visitkey  = "+ sessionStorage.getItem('VisitKey') +" where promokeydetail.assignmentnumber = "+ data[index - 1][4] +"  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = "+ sessionStorage.getItem('customerid') +")"]);*/
+                              [itemqry]);
+                }
+            	else if(platform=='Android')
+            	{
+            	    window.plugins.DataBaseHelper.select(itemqry, function(result)
+					{              
+                        var array = $.map(result.array, function (item, index) {               
+                			return [[item.itemcode, item.NewInvoiceAmount, item.SalesAmount,item.SalesQty,item.promoamount]];
+           				});
+           				
+           				result = array; 
+           				//alert(JSON.stringify(result));
+           				if(result.length > 0)
+                              {     
+                                    //var flag = false;
+                                    itemIndex = 0;
+                                    dataItem = result;
+                                   /* if(rangeBasis == 2)
+                                    {
+                                        if(eval(dataAmount[0][1]) >= eval(rangeLow) && eval(dataAmount[0][1]) <= eval(rangeHigh))
+                                        {
+                                            flag = true;
+                                        }                                                         
+                                                 
+                                    }
+                                    else 
+                                    {
+                                        if(eval(dataAmount[0][0]) >= eval(rangeLow) && eval(dataAmount[0][0]) <= eval(rangeHigh))
+                                        {
+                                            flag = true;
+                                        }
+                                        
+                                    }*/
+                             // alert('flag' +flag)
+                                    if(flag == true)
+                                    {
+                                        for(itemIndex = 1;itemIndex <= dataItem.length ;itemIndex++)
+                                        {                               
+                                                         if(eval(dataItem[itemIndex-1][0]) ==-1)
+                                                         {              
+                                                         InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow);
+                                                         }
+                                                         else
+                                                         {
+                                                         if(eval(dataItem[itemIndex-1][3]) > 0)
+                                                         InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow);
+                                                         }
+                                            //UpdateInvoiceDetail();
+                                        }
+                                        //navigator.notification.alert("Insert record successfully");
+                                        countRecord += 1;
+                                    }
+                                    else 
+                                    {
+                                        navigator.notification.alert("Promotion not avialable for this assignment number");    
+                                    }
+                              }
+                              else
+                              {                                        
+                                navigator.notification.alert("Item detail not found for assignment number");
+                              } 
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}
+            } 
+            function getItemAmountFixed(index,promotionTypeCode,rangeBasis)
+            {
+                var advanqry = "select count(*) as cnt from promokeydetail inner join productgroupdetail on  promokeydetail.qualificationgroup = productgroupdetail.groupnumber where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + " and productgroupdetail.itemqty !=0 and productgroupdetail.itemcode not in(select salesorderdetail.itemcode from salesorderdetail where salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " and salesqty>=productgroupdetail.itemqty)";
+                if(platform=='iPad')
+                {
+                    
+                    console.log("advanqry="+advanqry);
+                    Cordova.exec(function(result) {                             
+                                  if(result[0][0]==0)
+                                  {                     
+                                  getItemAmountFixed1(index,promotionTypeCode,rangeBasis)
+                                  }
+                                  else 
+                                  {
+                                  //navigator.notification.alert("Item amount not found");  
+                                  }
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error in getting item amount : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod",
+                                  [advanqry]);
+                    
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(advanqry, function(result)
+                                                         {          
+                                                         var array = $.map(result.array, function (item, index) {               
+                                                                           return [[item.cnt]];
+                                                                           });
+                                                         
+                                                         result = array;
+                                                         
+                                                         if(result[0][0]==0)
+                                                         {                    
+                                                         getItemAmountFixed1(index,promotionTypeCode,rangeBasis)
+                                                         }
+                                                         else 
+                                                         {
+                                                         //navigator.notification.alert("Item amount not found");  
+                                                         }                       
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }    
+        //for fixed assignment and qualification type
+        function getItemAmountFixed1(index,promotionTypeCode,rangeBasis)
+        {
+                var advanqry = "select ifnull((salesorderdetail.salesqty),0) As TotalQty,((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As TotalAmount,productgroupdetail.itemcode,itemqty,onetimeuse from promokeydetail inner join promoplandetail on promoplandetail.plannumber=promokeydetail.plannumber inner join productgroupdetail on  promokeydetail.qualificationgroup = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+            if(platform=='iPad')
+            {
+                
+                console.log("advanqry="+advanqry);
+                Cordova.exec(function(result) {                             
+                              if(result.length > 0)
+                              {                     
+                              dataAmount = result;
+                              
+                              //getItemDetail();
+                              
+                              getPromotionAssignmentAdvancedFixed(index,promotionTypeCode,rangeBasis,dataAmount);
+                              }
+                              else 
+                              {
+                              //navigator.notification.alert("Item amount not found");  
+                              }
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in getting item amount : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod",
+                              [advanqry]);
+                
+            }
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(advanqry, function(result)
+                                                     {          
+                                                     var array = $.map(result.array, function (item, index) {               
+                                                                       return [[item.TotalQty, item.TotalAmount,item.itemcode,item.itemqty,item.onetimeuse]];
+                                                                       });
+                                                     
+                                                     result = array;
+                                                     
+                                                     if(result.length > 0)
+                                                     {                     
+                                                     dataAmount = result;
+                                                     //getItemDetail();
+                                                     getPromotionAssignmentAdvancedFixed(index,promotionTypeCode,rangeBasis,dataAmount);
+                                                     }
+                                                     else 
+                                                     {
+                                                     //navigator.notification.alert("Item amount not found");  
+                                                     }                       
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+            
+         function getItemAmount(index,promotionTypeCode,rangeBasis)
+         {
+         	
+              if(data[index - 1][8] == 1)
+             {
+                 if(promotionTypeCode==0)
+                 {
+                     var advanqry = "select ifnull(sum(salesorderdetail.salesqty),0) As TotalQty,sum((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As TotalAmount from promokeydetail inner join salesorderdetail on salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = salesorderdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + ""; 
+                     console.log(advanqry);
+                 }
+                 else
+                 {
+                     var advanqry = "select ifnull(sum(salesorderdetail.salesqty),0) As TotalQty,sum((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As TotalAmount from promokeydetail inner join salesorderdetail on salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = salesorderdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                 }
+             }
+             else
+             {
+                 if(promotionTypeCode==0)
+                 {
+                     var advanqry = "select ifnull(sum(salesorderdetail.salesqty),0) As TotalQty,sum((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As TotalAmount from promokeydetail inner join productgroupdetail on  promokeydetail.qualificationgroup = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + ""; 
+                     console.log(advanqry);
+                 }
+                 else
+                 {
+                     var advanqry = "select ifnull(sum(salesorderdetail.salesqty),0) As TotalQty,sum((CAST((salesqty / itemmaster.unitspercase) AS INTEGER) * (salesorderdetail.salescaseprice)) + (CAST((salesqty % itemmaster.unitspercase) AS INTEGER) * salesorderdetail.salesprice)) As TotalAmount from promokeydetail inner join productgroupdetail on  promokeydetail.qualificationgroup = productgroupdetail.groupnumber inner join salesorderdetail on productgroupdetail.itemcode = salesorderdetail.itemcode and salesorderdetail.routekey = " + sessionStorage.getItem('RouteKey') + " and salesorderdetail.visitkey  = " + sessionStorage.getItem('VisitKey') + " inner join itemmaster on itemmaster.actualitemcode = productgroupdetail.itemcode where promokeydetail.assignmentnumber = " + data[index - 1][4] + "  and promokeydetail.promotionkey = (select promotionkey from customermaster where customercode = " + sessionStorage.getItem('customerid') + ") and promokeydetail.plannumber = " + data[index - 1][0] + "";
+                 }
+             }
+             if(platform=='iPad')
+           	 {
+                 
+                 console.log("advanqry="+advanqry);
+             Cordova.exec(function(result) {                             
+                           if(result.length > 0)
+                           {                     
+                                dataAmount = result;
+                           
+                                //getItemDetail();
+                                getPromotionAssignmentAdvanced(index,promotionTypeCode,rangeBasis);
+                           }
+                           else 
+                           {
+                                //navigator.notification.alert("Item amount not found");  
+                           }
+                           },
+                           function(error) {
+                                navigator.notification.alert("Error in getting item amount : " + error);
+                           },
+                           "PluginClass", 
+                           "GetdataMethod",
+                           [advanqry]);
+            
+            	}
+            	else if(platform=='Android')
+            	{
+            	    window.plugins.DataBaseHelper.select(advanqry, function(result)
+					{          
+					       var array = $.map(result.array, function (item, index) {               
+                			return [[item.TotalQty, item.TotalAmount]];
+           				  });
+           				  
+           				  result = array;
+           				   		    
+                          if(result.length > 0)
+                           {                     
+                                dataAmount = result;
+                                //getItemDetail();
+                                getPromotionAssignmentAdvanced(index,promotionTypeCode,rangeBasis);
+                           }
+                           else 
+                           {
+                                //navigator.notification.alert("Item amount not found");  
+                           }                       
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}
+         }   
+         //Function for insert promotion detail
+         function InsertPromotionDetail(itemIndex,dataItem,index,promotionTypeCode,rangeBasis,repeatingrange,rangeLow)
+            {   
+        	 
+        	 	//alert("InsertPromotionDetail");
+        	 	//alert(JSON.stringify(itemIndex));
+        	 	
+                var insertQry = '';
+                
+                if(rangeBasis==2)
+                {
+                    if(repeatingrange == 1)
+                    var rpromoamount = parseInt(eval(dataItem[itemIndex - 1][2])/rangeLow);
+                    else
+                    var rpromoamount =eval(dataItem[itemIndex - 1][1]);
+                }
+                else
+                {
+                    if(repeatingrange == 1)
+                    var rpromoamount = parseInt(dataItem[itemIndex - 1][3]/rangeLow);
+                    else
+                    var rpromoamount =eval(dataItem[itemIndex - 1][1]);
+                }
+                if(promotionTypeCode == 7)
+                {
+                    rpromoamount=eval(dataItem[itemIndex - 1][1]);
+                }
+                if(promotionTypeCode == 1)
+                {
+                    insertQry = "Insert Into promotiondetail(routekey,visitkey,transactionkey,itemtransactiontype,itemcode,promotiontypecode,promotionamount,oldpromotionamount,promotionplannumber,assignmentkey,weighted,istemp,salesamount,issync,rangelow,repeatingrange) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,4,"+ dataItem[itemIndex - 1][0] +","+ data[index - 1][3] +","+ rpromoamount  +","+ dataItem[itemIndex - 1][2] +","+ data[index - 1][2] +","+ data[index - 1][4] +",0,'true',"+ dataItem[itemIndex - 1][2] +",0,"+ rangeLow +","+ repeatingrange +")";
+                }
+                else if(promotionTypeCode == 2)
+                {
+                    insertQry = "Insert Into promotiondetail(routekey,visitkey,transactionkey,itemtransactiontype,itemcode,promotiontypecode,promotionamount,oldpromotionamount,promotionplannumber,assignmentkey,weighted,istemp,salesamount,issync,rangelow,repeatingrange) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,4,"+ dataItem[itemIndex - 1][0] +","+ data[index - 1][3] +","+ dataItem[itemIndex - 1][1]  +","+ dataItem[itemIndex - 1][2] +","+ data[index - 1][2] +","+ data[index - 1][4] +",0,'true',"+ dataItem[itemIndex - 1][2] +",0,"+ rangeLow +","+ repeatingrange +")";
+                }
+                else if(promotionTypeCode == 0)
+                {
+                    if(dataItem[itemIndex - 1][4]=='' || dataItem[itemIndex - 1][4]==0)
+                    dataItem[itemIndex - 1][4]=dataItem[itemIndex - 1][2];
+                    
+                    var promoamounts = dataItem[itemIndex - 1][2] - dataItem[itemIndex - 1][4];
+                    insertQry = "Insert Into promotiondetail(routekey,visitkey,transactionkey,itemtransactiontype,itemcode,promotiontypecode,promotionamount,oldpromotionamount,promotionplannumber,assignmentkey,weighted,istemp,salesamount,issync,rangelow,repeatingrange) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,4,"+ dataItem[itemIndex - 1][0] +","+ data[index - 1][3] +","+promoamounts+","+ dataItem[itemIndex - 1][2] +","+ data[index - 1][2] +","+ data[index - 1][4] +",0,'true',"+ dataItem[itemIndex - 1][2] +",0,"+ rangeLow +","+ repeatingrange +")";
+                }
+                else if(promotionTypeCode == 5)
+                {
+                    if(itemIndex == 1)
+                    {
+                    insertQry = "Insert Into promotiondetail(routekey,visitkey,transactionkey,itemtransactiontype,itemcode,promotiontypecode,promotionamount,oldpromotionamount,promotionplannumber,assignmentkey,weighted,istemp,salesamount,issync,rangelow,repeatingrange) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,4,'"+ dataItem[itemIndex - 1][0] +"',"+ data[index - 1][3] +","+ rpromoamount  +","+ dataItem[itemIndex - 1][2] +","+ data[index - 1][2] +","+ data[index - 1][4] +",0,'true',"+ dataItem[itemIndex - 1][2] +",0,"+ rangeLow +","+ repeatingrange +")";
+                    }
+                }
+                else if(promotionTypeCode == 6)
+                {
+                    if(itemIndex == 1)
+                    {
+                        insertQry = "Insert Into promotiondetail(routekey,visitkey,transactionkey,itemtransactiontype,itemcode,promotiontypecode,promotionamount,oldpromotionamount,promotionplannumber,assignmentkey,weighted,istemp,salesamount,issync,rangelow,repeatingrange) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,4,'"+ dataItem[itemIndex - 1][0] +"',"+ data[index - 1][3] +","+ dataItem[itemIndex - 1][1]  +","+ dataItem[itemIndex - 1][2] +","+ data[index - 1][2] +","+ data[index - 1][4] +",0,'true',"+ dataItem[itemIndex - 1][2] +",0,"+ rangeLow +","+ repeatingrange +")";
+                    }
+                }
+                else if(promotionTypeCode == 7)
+                {
+                   
+                    insertQry = "Insert Into promotiondetail(routekey,visitkey,transactionkey,itemtransactiontype,itemcode,promotiontypecode,promotionquantity,promotionplannumber,assignmentkey,weighted,istemp,salesamount,issync,rangelow,repeatingrange) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,4,"+ dataItem[itemIndex - 1][0] +","+ data[index - 1][3] +","+ rpromoamount +","+ data[index - 1][2] +","+ data[index - 1][4] +",0,'true',"+ dataItem[itemIndex - 1][2] +",0,"+ rangeLow +","+ repeatingrange +")";
+                }
+                
+                               
+                if(platform=='iPad')
+           	 	{
+                Cordova.exec(function(result) 
+                              {                                   
+                                    $("#tbl1 tr:eq("+ (index) +") td:eq(3)").html(1);
+                               $("#tbl1 tr:eq("+ (index) +") td:eq(0) img").css({"display":"block"});
+                                //navigator.notification.alert("Insert record successfully");
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error inserting record in promotion detail");
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod", 
+                              [insertQry]);
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert(insertQry,function(result)
+					{
+                        $("#tbl1 tr:eq("+ (index) +") td:eq(3)").html(1);     
+                    	$("#tbl1 tr:eq("+ (index) +") td:eq(0) img").css({"display":"block"});
+						//navigator.notification.alert("Insert record successfully");
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}  
+            }        
+            
+            //Function for bind selected record for promtion when next time user coming on this screen.
+            function selectPromotionList()
+            {
+                 
+                var plan = new Array();
+            	if(platform=='iPad')
+           	 	{
+                Cordova.exec(function(result) {                              
+                              if(result.length > 0)
+                              { 
+                                 
+                                for(i=0;i < result.length ;i++)
+                                {    
+                                    for(j=0;j < data.length;j++)
+                                    {    
+                                      
+                                        if(data[j][0] == result[i][0])
+                                        {                                                                                    
+                                            $("#tbl1 tr:eq("+ (j + 1) +")").toggleClass('clicked',false);              
+                                            $("#tbl1 tr:eq("+ (j + 1) +")").toggleClass('clicked');
+                                           // $("#tbl1 tr:eq("+ (j + 1) +") td:eq(0) img").css({"display":"block"});
+                                          //   $("#tbl1 tr:eq("+ (j + 1) +") td:eq(3)").html(1);
+                            
+                                            countRecord += 1;
+                                            arrayPlan.push(data[j][0]); 
+                              DeletePromotionDetail(j+1);
+                              promotionTypeCode = eval(data[j][3]);           
+                              rangeBasis = eval(data[j][5]);                               
+                              
+                              
+                              if(rangeBasis==3)
+                              getItemAmountFixed(j+1,promotionTypeCode,rangeBasis);
+                              else
+                              getItemAmount(j+1,promotionTypeCode,rangeBasis);
+                              
+                                           // sessionStorage.getItem('orderarrayplan',arrayPlan);
+                                        }
+                                        
+                                    }
+                                }
+                              
+                              if(sessionStorage.getItem('orderarrayplan') == ''  || sessionStorage.getItem('orderarrayplan') == null || sessionStorage.getItem('orderarrayplan') =='null')
+                              {
+                              
+                              } 
+                              else
+                              {
+                               arrayPlan = sessionStorage.getItem('orderarrayplan').split(',');
+                              }      
+                             
+                                    
+                                    for(i=0;i < data.length;i++)
+                                    {
+                                
+                                    for(k=0;k < arrayPlan.length;k++)
+                                    {
+                             
+                                        if(eval(data[i][0]) == eval(arrayPlan[k]))
+                                        {
+                                            $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked',false);
+                                            $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked');
+                                            //$("#tbl1 tr:eq("+ (i + 1) +") td:eq(0) img").css({"display":"block"});
+                                        }
+                              
+                                    }
+                                    }
+                              
+                                   /* for(i=0;i < data.length;i++)
+                                    {
+                                        for(j=0;j < plan.length;j++)
+                                        {
+                                            alert(data[i][0]);
+                                            alert(plan[j]);
+                              
+                                            if(eval(data[i][0]) == eval(plan[j]))
+                                            {                                                   
+                                                $("#tbl1 tr:eq("+ (i + 1) +") td:eq(0) img").css({"display":"block"});
+                                            }
+                                        }
+                                    }*/
+                              }
+                              else 
+                              {
+                              if(sessionStorage.getItem('orderarrayplan') == '' || sessionStorage.getItem('orderarrayplan') == null || sessionStorage.getItem('orderarrayplan') =='null')
+                              {
+                              
+                              } 
+                              else
+                              {
+                              arrayPlan = sessionStorage.getItem('orderarrayplan').split(',');
+                              }    
+                              
+                                    for(i=0;i < data.length;i++)
+                                    {
+                              
+                                        for(k=0;k < arrayPlan.length;k++)
+                                        {
+                              
+                                            if(eval(data[i][0]) == eval(arrayPlan[k]))
+                                            {
+                                                $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked',false);
+                                                $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked');
+                                               // $("#tbl1 tr:eq("+ (i + 1) +") td:eq(0) img").css({"display":"block"});
+                                            }
+                              
+                                        }
+                                    }
+                              }
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in select promotion list: " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select distinct promokeydetail.plannumber from promokeydetail inner join customermaster on promokeydetail.promotionkey = customermaster.promotionkey inner join promotiondetail on promokeydetail.plannumber = promotiondetail.promotionplannumber  where customermaster.customercode = "+ sessionStorage.getItem('customerid') +" and promotiondetail.routekey = "+ sessionStorage.getItem('RouteKey') +" and promotiondetail.visitkey = "+ sessionStorage.getItem('VisitKey') +""]);            
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.select("select distinct promokeydetail.plannumber from promokeydetail inner join customermaster on promokeydetail.promotionkey = customermaster.promotionkey inner join promotiondetail on promokeydetail.plannumber = promotiondetail.promotionplannumber  where customermaster.customercode = "+ sessionStorage.getItem('customerid') +" and promotiondetail.routekey = "+ sessionStorage.getItem('RouteKey') +" and promotiondetail.visitkey = "+ sessionStorage.getItem('VisitKey') +"",function(result)
+					{
+						var array = $.map(result.array, function (item, index) {               
+                		return [[item.plannumber]];
+            			});
+            			
+            			result = array;
+            			
+						if(result.length > 0)
+                              { 
+                                
+                                for(i=0;i < result.length ;i++)
+                                {    
+                                    for(j=0;j < data.length;j++)
+                                    {    
+                                      
+                                        if(data[j][0] == result[i][0])
+                                        { 
+                                                         $("#tbl1 tr:eq("+ (j + 1) +")").toggleClass('clicked',false);
+                                            $("#tbl1 tr:eq("+ (j + 1) +")").toggleClass('clicked');
+                                                         $("#tbl1 tr:eq("+ (j + 1) +") td:eq(0) img").css({"display":"block"});
+                              
+                                            countRecord += 1;
+                                            arrayPlan.push(data[j][0]); 
+                                            sessionStorage.getItem('orderarrayplan',arrayPlan);
+                                        }
+                                    }
+                                }
+                                                         
+                                                         
+                                                         if(sessionStorage.getItem('orderarrayplan') == '' || sessionStorage.getItem('orderarrayplan') == null || sessionStorage.getItem('orderarrayplan') =='null')
+                                                         {
+                                                         
+                                                         } 
+                                                         else
+                                                         {
+                                                         arrayPlan = sessionStorage.getItem('orderarrayplan').split(',');
+                                                         }    
+                                                         
+                                                         for(i=0;i < data.length;i++)
+                                                         {
+                                                         
+                                                         for(k=0;k < arrayPlan.length;k++)
+                                                         {
+                                                         
+                                                         if(eval(data[i][0]) == eval(arrayPlan[k]))
+                                                         {
+                                                         $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked',false);
+                                                         $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked');
+                                                       //  $("#tbl1 tr:eq("+ (i + 1) +") td:eq(0) img").css({"display":"block"});
+                                                         }
+                                                         
+                                                         }
+                                                         }
+                                                         
+                              }
+                                                         else 
+                                                         {
+                                                         if(sessionStorage.getItem('orderarrayplan') == '' || sessionStorage.getItem('orderarrayplan') == null || sessionStorage.getItem('orderarrayplan') =='null')
+                                                         {
+                                                         
+                                                         } 
+                                                         else
+                                                         {
+                                                         arrayPlan = sessionStorage.getItem('orderarrayplan').split(',');
+                                                         }    
+                                                         
+                                                         for(i=0;i < data.length;i++)
+                                                         {
+                                                         
+                                                         for(k=0;k < arrayPlan.length;k++)
+                                                         {
+                                                         
+                                                         if(eval(data[i][0]) == eval(arrayPlan[k]))
+                                                         {                    
+                                                         $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked',false);
+                                                         $("#tbl1 tr:eq("+ (i + 1) +")").toggleClass('clicked');
+                                                       //  $("#tbl1 tr:eq("+ (i + 1) +") td:eq(0) img").css({"display":"block"});
+                                                         }
+                                                         
+                                                         }
+                                                         }
+                                                         }                           
+                                                         
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}  
+            }
+            
+       function UpdateInvoiceDetail(invoiceIndex)
+            {
+                var UpdateQry = ''; 
+                      
+                promotiontype = eval(dataInvoice[invoiceIndex][1]);     
+                UpdatePromotionDetail(invoiceIndex);
+                
+                    if(eval(dataInvoice[invoiceIndex][1]) == 1)
+                    {
+                        dataInvoice[invoiceIndex][3] = eval(dataInvoice[invoiceIndex][3]);
+                        
+                        totalpromo += eval(dataInvoice[invoiceIndex][3]); 
+                       
+                        
+                        UpdateQry = "Update salesorderdetail set promoamount = promoamount + "+ dataInvoice[invoiceIndex][3] +",promovalue = promovalue + "+ dataInvoice[invoiceIndex][3] +",issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[invoiceIndex][0] +"";                    
+                        
+                                                   
+                    }
+                else if(eval(dataInvoice[invoiceIndex][1]) == 0)
+                {
+                    dataInvoice[invoiceIndex][3] = eval(dataInvoice[invoiceIndex][3]);
+                    
+                    totalpromo += eval(dataInvoice[invoiceIndex][3]); 
+                    
+                    
+                    UpdateQry = "Update salesorderdetail set promoamount = promoamount + "+ dataInvoice[invoiceIndex][3] +",promovalue = promovalue + "+ dataInvoice[invoiceIndex][3] +",issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[invoiceIndex][0] +"";                    
+                    
+                    
+                }
+                    else if(eval(dataInvoice[invoiceIndex][1]) == 2)
+                    {
+                        dataInvoice[invoiceIndex][3] = eval(dataInvoice[invoiceIndex][3]);
+                        dataInvoice[invoiceIndex][4] = eval(dataInvoice[invoiceIndex][4]);
+                        
+                                              
+                        totalpromo += ((dataInvoice[invoiceIndex][4]) * ((dataInvoice[invoiceIndex][3])/100));
+                        if(dataInvoice[invoiceIndex][11] == 1)
+                        {
+                            
+                            updaterepeaterange(dataInvoice,invoiceIndex);
+                        }
+                        else
+                        {
+                        
+                        UpdateQry = "Update salesorderdetail set promoamount = promoamount + (("+ dataInvoice[invoiceIndex][4]+" - promoamount) * (("+ dataInvoice[invoiceIndex][3] +")/100.0)),  promovalue = promovalue + (("+ dataInvoice[invoiceIndex][4]+" - promoamount) * (("+ dataInvoice[invoiceIndex][3] +")/100.0)),issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[invoiceIndex][0] +"";
+                        }                    
+                    }
+                
+                    else if(eval(dataInvoice[invoiceIndex][1]) == 5)
+                    {
+                        dataInvoice[invoiceIndex][3] = eval(dataInvoice[invoiceIndex][3]);
+                        
+                        UpdateQry = "Update salesorderheader set totalpromoamount = ifnull(totalpromoamount,0) + "+ dataInvoice[invoiceIndex][3] +" ,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";
+                                               
+                    }
+                    else if(eval(dataInvoice[invoiceIndex][1]) == 6)
+                    {
+                        dataInvoice[invoiceIndex][3] = eval(dataInvoice[invoiceIndex][3]);
+                        if(dataInvoice[invoiceIndex][11] == 1)
+                        {
+                            
+                            updateinvoicerepeaterange(dataInvoice,invoiceIndex);
+                        }
+                        else
+                        {
+                        UpdateQry = "Update salesorderheader set totalpromoamount = ifnull(totalpromoamount,0) + ((("+dataInvoice[invoiceIndex][9]+") - (select sum(promoamount) from salesorderdetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode IN ("+ dataInvoice[invoiceIndex][0] +"))) * ("+ dataInvoice[invoiceIndex][3] +")/100),issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";
+                        }
+                    }
+                    else if(eval(dataInvoice[invoiceIndex][1]) == 7)
+                    {
+                        dataInvoice[invoiceIndex][2] = eval(dataInvoice[invoiceIndex][2]);
+                        
+                        totalfree += eval(dataInvoice[invoiceIndex][2]);
+                        
+                        UpdateQry = "Update salesorderdetail set promoqty = promoqty + "+ dataInvoice[invoiceIndex][2] +",issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[invoiceIndex][0] +"";                  	
+                    }
+                                                          
+                if(platform=='iPad')
+           	 	{            
+                Cordova.exec(function(result) 
+                              {
+                                //navigator.notification.alert("Update invoice detail successfully");
+                              //alert(promotiontype);
+                                if(promotiontype == 1 || promotiontype == 2 || promotiontype == 7)
+                                {                                   
+                                   
+                                    UpdateInvoiceHeader();                                                   
+
+                                }
+                             
+                                if(invoiceIndex+1 < totalinvoice)
+                                {                                    
+                                    UpdateInvoiceDetail(invoiceIndex+1);                                    
+                                }
+                                else
+                                {                                   
+                                    checkRecordCount('linkContinue'); 
+                                }
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in updating record in invoice detail");
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod", 
+                              [UpdateQry]);
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert(UpdateQry,function(result)
+					{
+						//navigator.notification.alert("Update invoice detail successfully");
+                                                       
+                                                         if(promotiontype == 1 || promotiontype == 2 || promotiontype == 7)
+                                                         {                                   
+                                                         
+                                                            UpdateInvoiceHeader();
+                                                            
+                                                         }
+                                                         
+                                                         if(invoiceIndex+1 < totalinvoice)
+                                                         {
+                                                         UpdateInvoiceDetail(invoiceIndex+1);
+                                                         }
+                                                         else
+                                                         {
+                                                         checkRecordCount('linkContinue'); 
+                                                         }                                                       
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+				}           
+            }
+            function updateinvoicerepeaterange(datainvoice,index)
+            {
+                var selectqry = "select sum(promoamount) from salesorderdetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode IN ("+ dataInvoice[index][0] +")";
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  var promoamount = result[0][0];
+                                  var finalamount = 0;
+                                  var totalamount = eval(dataInvoice[index][9]) - eval(promoamount);
+                                  while( totalamount >= eval(dataInvoice[index][10]))
+                                  {
+                                  finalamount = finalamount + eval(dataInvoice[index][10]) * (dataInvoice[index][3]/100);
+                                  totalamount = totalamount - eval(dataInvoice[index][10]);
+                                  }
+                                 
+                                  UpdateQry = "Update salesorderheader set totalpromoamount = ifnull(totalpromoamount,0) +"+finalamount+" ,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";
+                                  
+                                  
+                                  
+                                  
+                                  Cordova.exec(function(result) 
+                                                {
+                                                //navigator.notification.alert("Update invoice detail successfully");
+                                                return true;
+                                                },
+                                                function(error) {
+                                                navigator.notification.alert("Error in updating record in invoice detail");
+                                                },
+                                                "PluginClass", 
+                                                "InsertUpdateMethod", 
+                                                [UpdateQry]);
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  },
+                                  function(error) {
+                                  alert(error);},
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  [selectqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                         {
+                                                         var promoamount = result.array[0][0];
+                                                         var finalamount = 0;
+                                                         var totalamount = eval(dataInvoice[index][4]) - eval(promoamount);
+                                                         while( totalamount >= eval(dataInvoice[index][10]))
+                                                         {
+                                                         finalamount = finalamount + eval(dataInvoice[index][10]) * (dataInvoice[index][3]/100);
+                                                         totalamount = totalamount - eval(dataInvoice[index][10]);
+                                                         }
+                                                         UpdateQry = "Update salesorderheader set totalpromoamount = ifnull(totalpromoamount,0) +"+finalamount+" ,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";
+                                                         window.plugins.DataBaseHelper.insert(UpdateQry,function(result)
+                                                                                              {
+                                                                                              //navigator.notification.alert("Update invoice detail successfully");                                                         
+                                                                                              return true;
+                                                                                              },
+                                                                                              function()
+                                                                                              {
+                                                                                              console.warn("Error calling plugin");
+                                                                                              });
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                
+            }
+            function updaterepeaterange(datainvoice,index)
+            {
+                var selectqry = "select promoamount from salesorderdetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[index][0] +"";
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  var promoamount = result[0][0];
+                                  console.log("promoamount="+promoamount);
+                                  var finalamount = 0;
+                                  var totalamount = eval(dataInvoice[index][4]) - eval(promoamount);
+                                  while( totalamount >= eval(dataInvoice[index][10]))
+                                  {
+                                  finalamount = finalamount + eval(dataInvoice[index][10]) * (dataInvoice[index][3]/100);
+                                  totalamount = totalamount - eval(dataInvoice[index][10]);
+                                  console.log("totalamount="+totalamount);
+                                  }
+                                  
+                                  UpdateQry = "Update salesorderdetail set promoamount = promoamount + "+finalamount+",  promovalue = promovalue + "+finalamount+",issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[index][0] +"";
+                                  console.log(UpdateQry);
+                                  
+                                  Cordova.exec(function(result) 
+                                                {
+                                                //navigator.notification.alert("Update invoice detail successfully");
+                                                return true;
+                                                },
+                                                function(error) {
+                                                navigator.notification.alert("Error in updating record in invoice detail");
+                                                },
+                                                "PluginClass", 
+                                                "InsertUpdateMethod", 
+                                                [UpdateQry]);
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  },
+                                  function(error) {
+                                  alert(error);},
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  [selectqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                         {
+                                                         var promoamount = result.array[0][0];
+                                                         var finalamount = 0;
+                                                         var totalamount = eval(dataInvoice[index][4]) - eval(promoamount);
+                                                         while( totalamount >= eval(dataInvoice[index][10]))
+                                                         {
+                                                         finalamount = finalamount + eval(dataInvoice[index][10]) * (dataInvoice[index][3]/100);
+                                                         totalamount = totalamount - eval(dataInvoice[index][10]);
+                                                         }
+                                                         UpdateQry = "Update invoicedetail set promoamount = promoamount + "+finalamount+",  promovalue = promovalue + "+finalamount+",issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ dataInvoice[index][0] +"";
+                                                         window.plugins.DataBaseHelper.insert(UpdateQry,function(result)
+                                                                                              {
+                                                                                              //navigator.notification.alert("Update invoice detail successfully");                                                         
+                                                                                              return true;
+                                                                                              },
+                                                                                              function()
+                                                                                              {
+                                                                                              console.warn("Error calling plugin");
+                                                                                              });
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            function UpdateInvoiceHeader()   
+            {              
+                
+                var uqry = '';
+              
+                
+                if(promotiontype == 1 || promotiontype == 2 ||  promotiontype == 0)
+                {
+                       uqry = "update salesorderheader set totalpromoamount = (select sum(ifnull(promoamount,0)) from salesorderdetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"),issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";                      
+                   
+                }
+                else if(promotiontype == 7)
+                {
+                     uqry = "update salesorderheader set totalfreesampleamount = "+ totalfree +" where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";
+                }
+                
+              
+                if(platform=='iPad')
+           	 	{            
+                    Cordova.exec(function(result) 
+                                  {
+                                  //navigator.notification.alert("Update invoice detail successfully");
+                                  return true;
+                                  },
+                                  function(error) {
+                                    navigator.notification.alert("Error in updating record in invoice detail");
+                                  },
+                                  "PluginClass", 
+                                  "InsertUpdateMethod", 
+                                  [uqry]);
+            	}
+                else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert(uqry,function(result)
+                                                         {
+                                                         //navigator.notification.alert("Update invoice detail successfully");                                                         
+                                                         return true;
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+				}          
+            }
+            
+           function UpdatePromotionDetail(index)
+            {
+                var updatePromo = '';
+                var rowid = 0,itemID = 0,ptype = 0,tempPlan = 0,amount = 0;               
+                
+                ptype = eval(dataInvoice[index][1]);
+                rowid =  eval(dataInvoice[index][8]);
+                itemID = dataInvoice[index][0];
+                amount = (eval(dataInvoice[index][9]) - eval(dataInvoice[index][3]));
+                count1 += 1;
+                if(ptype == 0)
+                {
+                    
+                    flagpromo = true;
+                    
+                    /* updatePromo = "update promotiondetail set oldpromotionamount = "+ amount +" where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid <> (select min(rowid) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 1)"; */                   
+                    
+                    /* updatePromo = "update promotiondetail set oldpromotionamount = case when (select(oldpromotionamount - "+ eval(dataInvoice[index][3]) +") from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 1 and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select(oldpromotionamount - "+ eval(dataInvoice[index][3]) +") from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 1 and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) End where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +""; */                    
+                    
+                    updatePromo = "update promotiondetail set oldpromotionamount = case when (select(oldpromotionamount - promotionamount) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 0 and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select(oldpromotionamount - promotionamount) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 0 and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) End,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";
+                }                
+                else if(ptype == 1)
+                {
+                    
+                    flagpromo = true;
+                    
+                  /* updatePromo = "update promotiondetail set oldpromotionamount = "+ amount +" where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid <> (select min(rowid) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 1)"; */                   
+                    
+                   /* updatePromo = "update promotiondetail set oldpromotionamount = case when (select(oldpromotionamount - "+ eval(dataInvoice[index][3]) +") from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 1 and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select(oldpromotionamount - "+ eval(dataInvoice[index][3]) +") from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and promotiontypecode = 1 and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) End where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +""; */                    
+                    
+                       updatePromo = "update promotiondetail set oldpromotionamount = case when (select(oldpromotionamount - promotionamount) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select(oldpromotionamount - promotionamount) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0)  and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) End,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";
+                }
+                else if(ptype == 2)
+                {
+                   
+                    
+                   /* updatePromo = "update promotiondetail set oldpromotionamount = "+ amount +" where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid <> (select min(rowid) from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 2))"; */ 
+                    if(flagpromo == true && flagpromo2 == false || flagpromo == false && flagpromo2 == false)
+                    {                  
+                        if(dataInvoice[index][11] == 1)
+                        {
+                            updatepromotionrepeat(dataInvoice,index,count1,1);
+                        }
+                        else
+                        {
+                        updatePromo = "update promotiondetail set oldpromotionamount = case when (select case when promotiontypecode = 2 Then (oldpromotionamount - (oldpromotionamount * (promotionamount)/100.0)) Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select case when promotiontypecode = 2 Then (oldpromotionamount - (oldpromotionamount * (promotionamount)/100.0)) Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1)  End,issync=0  where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";   
+                        }
+                    }
+                    else if(flagpromo2 == true)
+                    {
+                        if(dataInvoice[index][11] == 1)
+                        {
+                            updatepromotionrepeat(dataInvoice,index,count1,2);
+                        }
+                        else
+                        {
+                        updatePromo = "update promotiondetail set oldpromotionamount = case when (select case when promotiontypecode = 2 Then (oldpromotionamount - (oldpromotionamount * (promotionamount)/100.0)) Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 2 or promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select case when promotiontypecode = 2 Then (oldpromotionamount - (oldpromotionamount * (promotionamount)/100.0)) Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 2 or promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1)  End,issync=0  where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";  
+                        }
+                    }
+                    
+                    flagpromo2 = true;
+                }
+                else if(ptype == 6)
+                {
+                    updatePromo = "update promotiondetail set oldpromotionamount =oldpromotionamount - (select sum(promoamount) from salesorderdetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode IN ("+ itemID +")),issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = '"+ itemID +"' and rowid = "+ rowid +""; 
+                    
+                }
+                console.log(updatePromo);
+                               
+                if(platform=='iPad')
+           	 	{            
+                    Cordova.exec(function(result) 
+                                  {
+                                  //navigator.notification.alert("Update invoice detail successfully");
+                                  //alert(promotiontype);                                    
+                                    UpdateOrder(rowid,count1,ptype);                  
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error in updating record in invoice detail");
+                                  },
+                                  "PluginClass", 
+                                  "InsertUpdateMethod", 
+                                  [updatePromo]);
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert(updatePromo,function(result)
+                                                         {
+                                                         //navigator.notification.alert("Update invoice detail successfully");
+                                                            UpdateOrder(rowid,count1,ptype); 
+                                                                                      
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+				}           
+
+            }
+            function updatepromotionrepeat(dataInvoice,index,count1,flag)
+            {
+                ptype = eval(dataInvoice[index][1]);
+                rowid =  eval(dataInvoice[index][8]);
+                itemID = dataInvoice[index][0];
+                  
+                amount = (eval(dataInvoice[index][9]) - eval(dataInvoice[index][3]));
+                if(flag ==1)
+                {
+                    var selectproqry ="select oldpromotionamount,promotionamount from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1";
+                }
+                else
+                {
+                    var selectproqry ="select oldpromotionamount,promotionamount from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 2 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1";
+                }
+                
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  var oldamount = result[0][0];
+                                  var promoamount = result[0][1];
+                                  var finalamount = 0;
+                                  var totalamount = eval(oldamount);
+                                  while( totalamount >= eval(dataInvoice[index][10]))
+                                  {
+                                  finalamount = finalamount + eval(dataInvoice[index][10]) * (promoamount/100);
+                                  totalamount = totalamount - eval(dataInvoice[index][10]);
+                                  }
+                                  if(flag ==1)
+                                  {
+                                  updatePromo = "update promotiondetail set oldpromotionamount = case when (select case when promotiontypecode = 2 Then (oldpromotionamount - "+finalamount+") Else (oldpromotionamount - "+ eval(dataInvoice[index][3]) +") End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select case when promotiontypecode = 2 Then (oldpromotionamount - ("+finalamount+")) Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1)  End ,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";
+                                  
+                                  }
+                                  else
+                                  {
+                                  updatePromo = "update promotiondetail set oldpromotionamount = case when (select case when promotiontypecode = 2 Then (oldpromotionamount - "+finalamount+") Else (oldpromotionamount - "+ eval(dataInvoice[index][3]) +") End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 2 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select case when promotiontypecode = 2 Then (oldpromotionamount - ("+finalamount+")) Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 2 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1)  End,issync=0  where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";
+                                  }
+                                  
+                                  
+                                  Cordova.exec(function(result) 
+                                                {
+                                                //navigator.notification.alert("Update invoice detail successfully");
+                                                return true;
+                                                },
+                                                function(error) {
+                                                navigator.notification.alert("Error in updating record in invoice detail");
+                                                },
+                                                "PluginClass", 
+                                                "InsertUpdateMethod", 
+                                                [updatePromo]);
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  },
+                                  function(error) {
+                                  alert(error);},
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  [selectproqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectproqry,function(result)
+                                                         {
+                                                         var oldamount = result.array[0][0];
+                                                         var promoamount = result.array[0][1];
+                                                         var finalamount = 0;
+                                                         var totalamount = eval(oldamount);
+                                                         while( totalamount >= eval(dataInvoice[index][10]))
+                                                         {
+                                                         finalamount = finalamount + eval(dataInvoice[index][10]) * (promoamount/100);
+                                                         totalamount = totalamount - eval(dataInvoice[index][10]);
+                                                         }
+                                                         updatePromo = "update promotiondetail set oldpromotionamount = case when (select case when promotiontypecode = 2 Then (oldpromotionamount - "+finalamount+") Else (oldpromotionamount - "+ eval(dataInvoice[index][3]) +") End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1) Is NULL Then oldpromotionamount Else (select case when promotiontypecode = 2 Then (oldpromotionamount - ("+finalamount+") Else (oldpromotionamount - promotionamount) End from promotiondetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and (promotiontypecode = 1 or promotiontypecode = 0) and orderid < "+ count1 +" and orderid <> 0 order by orderid desc limit 1)  End ,issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemID +" and rowid = "+ rowid +"";
+                                                         window.plugins.DataBaseHelper.insert(updatePromo,function(result)
+                                                                                              {
+                                                                                              //navigator.notification.alert("Update invoice detail successfully");                                                         
+                                                                                              return true;
+                                                                                              },
+                                                                                              function()
+                                                                                              {
+                                                                                              console.warn("Error calling plugin");
+                                                                                              });
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                
+                
+                
+            }
+            function UpdateOrder(rowid,count,ptype)
+            {
+                var updateorder = '';
+                
+                if(ptype == 1 || ptype == 2 || ptype==0)
+                {
+                updateorder = "update promotiondetail set orderid = "+ count +" where rowid = "+ rowid +"";                
+                
+                if(platform=='iPad')
+           	 	{            
+                    Cordova.exec(function(result) 
+                                  {
+                                  //navigator.notification.alert("Update invoice detail successfully");
+                                  //alert(promotiontype);                                 
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error in updating record in invoice detail");
+                                  },
+                                  "PluginClass", 
+                                  "InsertUpdateMethod", 
+                                  [updateorder]);
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert(updateorder,function(result)
+                                                         {
+                                                         //navigator.notification.alert("Update invoice detail successfully");                                                        
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+				}
+                }
+            }
+            
+            function UpdatePromoDetailOrder()
+            {
+                var updatedetailorder = '';
+                
+                if(eval(data[index - 1][3]) == 1 || eval(data[index - 1][3]) == 2 || eval(data[index - 1][3]) == 0)
+                {
+                updatedetailorder = "update promotiondetail set oldpromotionamount = salesamount,orderid = 0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +"";
+                
+                if(platform=='iPad')
+           	 	{            
+                    Cordova.exec(function(result) 
+                                  {
+                                  //navigator.notification.alert("Update invoice detail successfully");
+                                  //alert(promotiontype);                                 
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error in updating record in invoice detail");
+                                  },
+                                  "PluginClass", 
+                                  "InsertUpdateMethod", 
+                                  [updatedetailorder]);
+            	}
+            	else if(platform=='Android')
+            	{          
+            		window.plugins.DataBaseHelper.insert(updatedetailorder,function(result)
+                                                         {
+                                                         //navigator.notification.alert("Update invoice detail successfully");                                                        
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+				}
+                }
+
+            }
+            function getPassword()
+            {   
+                
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {   
+                                  
+                                  
+                                  
+                                  if (result.length > 0) {
+                                  var i = result[0][0]; 
+                                 
+                                 if(result[0][0] == 0)
+                                 $("#promodiv").css({'display':'none'});
+                                 
+                                  localStorage.PromotionPassword = ((result[0][0] == 0) ? 0 : result[0][i]);
+                                  localStorage.LoadPassword2 = result[0][5];
+                                  
+                                  }
+                                  else {
+                                  localStorage.PromotionPassword = "";
+                                  localStorage.adminpass = "";
+                                  }
+                                  
+                                  },
+                                  function(error) {
+                                  alert("Error in getting Password : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  ["select passwordarray03,password1,password2,password3,password4,password5 From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +""]);   
+                    
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select("select passwordarray03,password1,password2,password3,password4,password5 From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +"",function(result)
+                                                         {
+                                                         
+                                                         result = $.map(result.array, function (item, index) {
+                                                                        
+                                                                        return [[item.passwordarray03, item.password1,item.password2,item.password3,item.password4,item.password5]];
+                                                                        });
+                                                         if (result.length > 0) {
+                                                         var i = result[0][0]; 
+                                                         
+                                                         if(result[0][0] == 0)
+                                                         $("#promodiv").css({'display':'none'});
+                                                         
+                                                         localStorage.PromotionPassword = ((result[0][0] == 0) ? 0 : result[0][i]);
+                                                         localStorage.LoadPassword2 = result[0][5];
+                                                         
+                                                         }
+                                                         else {
+                                                         localStorage.PromotionPassword = "";
+                                                         localStorage.adminpass = "";
+                                                         }
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                } 
+                
+            }
+            function enforcepromotionoverride()
+            {
+                localStorage.promooveride=1;               
+                
+                $('#btnSubmit1').simpledialog('close');
+            }
+        </script>
+
+    </div>
+</body>
+</html>

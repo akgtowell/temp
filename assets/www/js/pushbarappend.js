@@ -1,0 +1,1 @@
+$('#bgclheader #Back_inner' ).append('<div class="wrapper"><div class="card_content"><div><img title="" alt="" data-pushbar-target="left"  src="../images/icons8-menu-50.png" id="setting"></div></div></div> ')
